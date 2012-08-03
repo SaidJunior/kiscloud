@@ -2,6 +2,8 @@ package rie6.client.controleur;
 
 import java.util.Date;
 
+import rie6.client.admin.controleur.ControllerAdmin;
+import rie6.client.admin.vue.AdminPortal;
 import rie6.client.model.MyPopup;
 import rie6.client.model.MyUser;
 import rie6.client.model.RPCservice;
@@ -127,14 +129,18 @@ public class ControleurPrincipal {
 
 
 	protected void AffichePageAcceuilClient() {
-		//TODO Nico: faire la page acceil client
+		//TODO Nico: faire la page accueil client
 		System.out.println("j'affiche l'interface client");
 	}
 
 
 	protected void AffichePageAcceuilAdmin() {
-		// TODO Syslvain:  rediriger vers  MVC administration
+		// TODO Sylvain:  rediriger vers  MVC administration
 		System.out.println("j'affiche la page d'administration");
+		
+		ControllerAdmin controllerAdmin = new ControllerAdmin();
+		AdminPortal adminPortal = new AdminPortal(controllerAdmin);
+		
 	}
 
 }
