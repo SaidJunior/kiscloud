@@ -1,0 +1,76 @@
+@CHARSET "UTF-8";
+@font-face { font-family:Ubuntu; src:url(/font/Ubuntu.ttf); }
+
+/* CSS de la page d'acceuil avec le login et mot de passe  */
+body{
+	background-image:url(/images/cloud.jpg);
+	font-family:Ubuntu;
+	padding:0px;
+	margin:0;
+	text-align:center;
+}
+
+/* La div login et mot de passe */
+.div_login_page{
+	margin-top: 20px;
+    border-radius:20px;
+    width: 600px;
+    padding: 10px;
+    background-color:white;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+/*  Tout les textbox de gwt */
+.gwt-TextBox{
+	/* arondie */
+	border-radius: 50px;
+}
+
+/* Password Textbox de gwt */
+.gwt-PasswordTextBox{
+	/* arondie */
+	border-radius: 50px;
+}
+
+/* Tous les boutons GWT */
+.gwt-Button {
+	-moz-box-shadow:inset 0px 1px 0px 0px #cae3fc;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #cae3fc;
+	box-shadow:inset 0px 1px 0px 0px #cae3fc;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #06b4ff), color-stop(1, #91e0ff) );
+	background:-moz-linear-gradient( center top, #06b4ff 5%, #91e0ff 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#06b4ff', endColorstr='#91e0ff');
+	background-color:#06b4ff;
+	-moz-border-radius:20px;
+	-webkit-border-radius:20px;
+	border-radius:20px;
+	border:1px solid #469df5;
+	display:inline-block;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #287ace;
+}.gwt-Button:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #91e0ff), color-stop(1, #06b4ff) );
+	background:-moz-linear-gradient( center top, #91e0ff 5%, #06b4ff 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#91e0ff', endColorstr='#06b4ff');
+	background-color:#91e0ff;
+}.gwt-Button:active {
+	position:relative;
+	top:1px;
+}
+
+/* Le popup */
+.myPopup{
+	 margin-top: 20px;
+     border-radius:20px;
+     width: 500px;
+     padding: 10px;
+     background-color:white;
+     text-align: center;
+}
+
