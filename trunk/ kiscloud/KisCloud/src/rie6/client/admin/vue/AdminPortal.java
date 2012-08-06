@@ -12,6 +12,8 @@ public class AdminPortal extends DockPanel{
 
 	public AdminPortal(ControllerAdmin controllerAdmin) {
 		
+		System.out.println(" j'affiche la page d'administration");
+		
 		this.controllerAdmin = controllerAdmin;
 		controllerAdmin.setAdminPortal(this);
 		
