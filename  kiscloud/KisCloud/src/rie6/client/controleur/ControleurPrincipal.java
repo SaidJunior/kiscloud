@@ -136,7 +136,7 @@ public class ControleurPrincipal {
 
 	protected void AffichePageAcceuilAdmin() {
 		// TODO Sylvain:  rediriger vers  MVC administration
-		System.out.println("j'affiche la page d'administration");
+		System.out.println("je vais afficher la page d'administration");
 		
 		ControllerAdmin controllerAdmin = new ControllerAdmin();
 		AdminPortal adminPortal = new AdminPortal(controllerAdmin);
