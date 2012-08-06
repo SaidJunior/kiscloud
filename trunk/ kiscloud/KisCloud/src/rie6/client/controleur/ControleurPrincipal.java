@@ -42,7 +42,7 @@ public class ControleurPrincipal {
 			public void onSuccess(String result[]) {
 				
 				if(result[0]==null){
-					// id pas bon on propose le log classicvia formulaire
+					// id pas bon on propose le log classic via formulaire
 					AffichePageLogin();
 				}else{
 					//on a reçu les infos d'un client. on créé l'objet user
