@@ -13,34 +13,34 @@ public class MenuButton extends VerticalPanel{
 		
 		this.controllerAdmin = controllerAdmin;
 		
-		this.setSize("300px", "800px");
+		this.setSize("200px", "500px");
 		this.setBorderWidth(5);
 		
 		Button buttonManageUser = new Button("MANAGE USERS");
 		buttonManageUser.addClickHandler(new ListenerAdmin("buttonManageUser", controllerAdmin));
 		//buttonManageUser.setStyleName("menuButton");
-		buttonManageUser.setWidth("300px");
-		buttonManageUser.setHeight("160px");
+		buttonManageUser.setWidth("200px");
+		buttonManageUser.setHeight("100px");
 		
 		Button buttonManageNode = new Button("MANAGE NODE");
 		buttonManageNode.addClickHandler(new ListenerAdmin("buttonManageNode", controllerAdmin));
-		buttonManageNode.setWidth("300px");
-		buttonManageNode.setHeight("160px");
+		buttonManageNode.setWidth("200px");
+		buttonManageNode.setHeight("100px");
 		
 		Button buttonViewRessources = new Button("VIEW RESSOURCES");
 		buttonViewRessources.addClickHandler(new ListenerAdmin("buttonViewRessources", controllerAdmin));
-		buttonViewRessources.setWidth("300px");
-		buttonViewRessources.setHeight("160px");
+		buttonViewRessources.setWidth("200px");
+		buttonViewRessources.setHeight("100px");
 		
 		Button buttonListVMUsers = new Button("LIST VM'S USERS");
 		buttonListVMUsers.addClickHandler(new ListenerAdmin("buttonListVMUsers", controllerAdmin));
-		buttonListVMUsers.setWidth("300px");
-		buttonListVMUsers.setHeight("160px");
+		buttonListVMUsers.setWidth("200px");
+		buttonListVMUsers.setHeight("100px");
 		
 		Button buttonLogs = new Button("LOGS");
 		buttonLogs.addClickHandler(new ListenerAdmin("buttonLogs", controllerAdmin));
-		buttonLogs.setWidth("300px");
-		buttonLogs.setHeight("160px");
+		buttonLogs.setWidth("200px");
+		buttonLogs.setHeight("100px");
 
 		this.add(buttonManageUser);
 		this.add(buttonManageNode);
