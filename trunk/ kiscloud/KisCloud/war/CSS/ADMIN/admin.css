@@ -1,12 +1,24 @@
 
 .panelAdminPortal {
-	background-color:gainsboro;
+	background-color:#F8F8FF;
     overflow:auto;
     margin
 }
 
 .menuButton{
-	background-color:gainsboro;
+	background-color:#F8F8FF;
+	width: 200px;
+	height: 100px;
+}
+
+.stackMenu{
+	
+	width: 200px;
+	height: 600px;
+}
+
+.stackMenuLabel{
+	
 	width: 200px;
 	height: 100px;
 }
