@@ -18,29 +18,23 @@ public class MenuButton extends VerticalPanel{
 		
 		Button buttonManageUser = new Button("MANAGE USERS");
 		buttonManageUser.addClickHandler(new ListenerAdmin("buttonManageUser", controllerAdmin));
-		//buttonManageUser.setStyleName("menuButton");
-		buttonManageUser.setWidth("200px");
-		buttonManageUser.setHeight("100px");
+		buttonManageUser.setStyleName("menuButton");
 		
 		Button buttonManageNode = new Button("MANAGE NODE");
 		buttonManageNode.addClickHandler(new ListenerAdmin("buttonManageNode", controllerAdmin));
-		buttonManageNode.setWidth("200px");
-		buttonManageNode.setHeight("100px");
+		buttonManageNode.setStyleName("menuButton");
 		
 		Button buttonViewRessources = new Button("VIEW RESSOURCES");
 		buttonViewRessources.addClickHandler(new ListenerAdmin("buttonViewRessources", controllerAdmin));
-		buttonViewRessources.setWidth("200px");
-		buttonViewRessources.setHeight("100px");
+		buttonViewRessources.setStyleName("menuButton");
 		
 		Button buttonListVMUsers = new Button("LIST VM'S USERS");
 		buttonListVMUsers.addClickHandler(new ListenerAdmin("buttonListVMUsers", controllerAdmin));
-		buttonListVMUsers.setWidth("200px");
-		buttonListVMUsers.setHeight("100px");
+		buttonListVMUsers.setStyleName("menuButton");
 		
 		Button buttonLogs = new Button("LOGS");
 		buttonLogs.addClickHandler(new ListenerAdmin("buttonLogs", controllerAdmin));
-		buttonLogs.setWidth("200px");
-		buttonLogs.setHeight("100px");
+		buttonLogs.setStyleName("menuButton");
 
 		this.add(buttonManageUser);
 		this.add(buttonManageNode);

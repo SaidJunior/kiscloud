@@ -33,12 +33,10 @@ public class GetListUser {
 	        resultSet = statement.executeQuery("select * from KISCLOUD.USERS");
 	   
 	        while(resultSet.next()){
-	        	//System.out.println(" Je remplis ma liste d'utilisateur (GetListUser) ");
 	        	User user = new User(resultSet.getString("id_user"),resultSet.getString("login_user"),resultSet.getString("mdp_user"),resultSet.getString("nom_user"),resultSet.getString("prenom_user"),resultSet.getString("mail_user"),resultSet.getString("status_user"));
 	        	listInfoBase.add(user);
 	        }
 	                
-
 		} catch (SQLException e) {
 			
 			e.printStackTrace();

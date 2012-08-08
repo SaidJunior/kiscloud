@@ -19,6 +19,7 @@ public class AdminPortal extends DockPanel{
 		this.controllerAdmin = controllerAdmin;
 		controllerAdmin.setAdminPortal(this);
 		
+	
 		this.setSize("1000px", "800px");
 		this.setBorderWidth(5);
 		this.setStyleName("panelAdminPortal");
@@ -33,7 +34,7 @@ public class AdminPortal extends DockPanel{
 		horizontalPanelTitre.add(labelBandeau);
 		horizontalPanelTitre.setHeight("20px");
 		horizontalPanelTitre.setWidth("100px");
-		labelBandeau.setHorizontalAlignment(HorizontalPanel.ALIGN_CENTER);
+		labelBandeau.setHorizontalAlignment(ALIGN_CENTER);
 		
 		//placement des panels sur le portail
 		this.add(horizontalPanelTitre, DockPanel.NORTH); 	
