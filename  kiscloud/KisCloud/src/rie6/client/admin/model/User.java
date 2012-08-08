@@ -1,6 +1,8 @@
 package rie6.client.admin.model;
 
-public class User {
+import com.google.gwt.user.client.rpc.IsSerializable;
+
+public class User implements IsSerializable {
 	
 	private String id;
 	private String login;
@@ -9,6 +11,11 @@ public class User {
 	private String nom;
 	private String mail;
 	private String status;
+	
+	//pour la serialisation
+	public User(){
+		
+	}
 	
 	public User (String id, String login, String mdp, String nom, String prenom, String mail, String status){
 		

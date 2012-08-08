@@ -21,7 +21,7 @@ public class AdminPortal extends DockPanel{
 		
 		this.setSize("1000px", "800px");
 		this.setBorderWidth(5);
-		this.addStyleName("panelAdminPortal");
+		this.setStyleName("panelAdminPortal");
 
 		// Creation du panel de bouton pour manager la partie admin
 		MenuButton menuButton = new MenuButton(controllerAdmin);
