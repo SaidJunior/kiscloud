@@ -31,7 +31,7 @@ public class RPCServiceImpl extends RemoteServiceServlet implements RPCservice {
 	
 	public List<User> getListUser(){
 		GetListUser getListUser = new GetListUser(controleurServeur);
-		return null;
+		return getListUser.getListInfoBase();
 		
 	}
 

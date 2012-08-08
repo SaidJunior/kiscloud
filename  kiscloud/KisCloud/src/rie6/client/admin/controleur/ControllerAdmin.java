@@ -22,7 +22,6 @@ public class ControllerAdmin {
 	}
 	
 	
-
 	public AdminPortal getAdminPortal() {
 		return adminPortal;
 	}
@@ -41,12 +40,12 @@ public class ControllerAdmin {
 
 			@Override
 			public void onFailure(Throwable caught) {
-				System.out.println("le systeme ne repond pas , PEPIN !! ");
+				System.out.println("le systeme ne repond pas , PEPIN !! (ControllerAdmin)");
 			}
 
 			@Override
 			public void onSuccess(List<User> result) {
-				System.out.println(" le serveur me retourne un truc ");	
+				System.out.println(" le serveur me retourne un truc (ControllerAdmin)");	
 				
 			}
 		};

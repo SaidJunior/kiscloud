@@ -6,15 +6,17 @@ public class User {
 	private String login;
 	private String mdp;
 	private String prenom;
+	private String nom;
 	private String mail;
 	private String status;
 	
-	public User (String id, String login, String mdp, String prenom, String mail, String status){
+	public User (String id, String login, String mdp, String nom, String prenom, String mail, String status){
 		
 		this.id = id;
 		this.login = login;
 		this.prenom = prenom;
 		this.mail = mail;
+		this.nom = nom;
 		this.status = status;	
 	}
 
@@ -44,6 +46,16 @@ public class User {
 	public void setMdp(String mdp) {
 		this.mdp = mdp;
 	}
+
+		
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
 
 	public String getPrenom() {
 		return prenom;

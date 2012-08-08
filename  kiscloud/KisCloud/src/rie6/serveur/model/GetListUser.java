@@ -5,7 +5,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
+import rie6.client.admin.model.User;
 import rie6.serveur.controleur.ControleurServeur;
 
 public class GetListUser {
@@ -13,9 +15,9 @@ public class GetListUser {
 	private ControleurServeur controleurServeur;
 	private Connection connect = null;
 	private Statement statement = null;
-	private ResultSet resultSet = null;
-	
-	
+	private ResultSet resultSet;
+	private List<User> listInfoBase;
+
 	public GetListUser(ControleurServeur controleurServeur){
 		
 		//preparation du driver JAR
@@ -28,10 +30,13 @@ public class GetListUser {
 	        statement = connect.createStatement();
 	        // ecriture et execution de la requete
 	        resultSet = statement.executeQuery("select * from kiscloud.USERS");
-	        
+	   
 	        while(resultSet.next()){
-	        	System.out.println(" resultat du resultSet de la base : " + resultSet.getString("login_user"));
+	        	System.out.println(" Je remplis ma liste d'utilisateur (GetListUser) ");
+	        	User user = new User(resultSet.getString("id_user"),resultSet.getString("login_user"),resultSet.getString("mdp_user"),resultSet.getString("nom_user"),resultSet.getString("prenom_user"),resultSet.getString("mail_user"),resultSet.getString("status_user"));
+	        	listInfoBase.add(user);
 	        }
+	        
 	        
 
 		} catch (SQLException e) {
@@ -48,4 +53,10 @@ public class GetListUser {
 			e.printStackTrace();
 		}
 	}
+
+	public List<User> getListInfoBase() {
+		return listInfoBase;
+	}
+
+
 }
