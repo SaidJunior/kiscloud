@@ -55,8 +55,7 @@ public class ControllerAdmin {
 		rpcServiceAsync.getListUser(asyncCallback);
 	
 	}
-
-
+	
 	protected void setPageManageListUser(List<User> result) {
 		this.pageManageUser.setListUser(result);		
 	}
