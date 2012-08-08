@@ -21,27 +21,22 @@ public class ListenerAdmin implements ClickHandler {
 	public void onClick(ClickEvent event) {
 		
 		if (id.equals("buttonManageUser")){		
-			System.out.println("** Je clique sur le bouton : MANAGE USERS **");
 			PageManageUser pageManageUser = new PageManageUser(controllerAdmin);
 			
 		}
 		
 		if (id.equals("buttonManageNode")){		
-			System.out.println("** Je clique sur le bouton : MANAGE NODE **");
 			
 		}
 		
 		if (id.equals("buttonViewRessources")){		
-			System.out.println("** Je clique sur le bouton : VIEW RESSOURCES **");
 			
 		}
 		
 		if (id.equals("buttonListVMUsers")){		
-			System.out.println("** Je clique sur le bouton : LIST VM'S USERS **");
 			
 		}
 		if (id.equals("buttonLogs")){		
-			System.out.println("** Je clique sur le bouton : LOGS **");
 			
 		}
 

@@ -13,6 +13,7 @@ import rie6.client.vue.LoginPage;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.RootPanel;
 
 public class ControleurPrincipal {
 	//*************************************
@@ -127,7 +128,6 @@ public class ControleurPrincipal {
 		
 	}
 
-
 	protected void AffichePageAcceuilClient() {
 		//TODO Nico: faire la page accueil client
 		System.out.println("j'affiche l'interface client");
@@ -138,8 +138,11 @@ public class ControleurPrincipal {
 		// TODO Sylvain:  rediriger vers  MVC administration
 		System.out.println("je vais afficher la page d'administration");
 		
+		//rootpanel.get.clean
+		RootPanel.get().clear();
 		ControllerAdmin controllerAdmin = new ControllerAdmin();
 		AdminPortal adminPortal = new AdminPortal(controllerAdmin);
+		RootPanel.get().add(adminPortal);
 		
 	}
 
