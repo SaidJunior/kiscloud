@@ -20,6 +20,8 @@ public class ListenerAdmin implements ClickHandler {
 	@Override
 	public void onClick(ClickEvent event) {
 		
+		//**** MENU BUTTON ****// 
+		
 		if (id.equals("buttonManageUser")){		
 			PageManageUser pageManageUser = new PageManageUser(controllerAdmin);
 			
@@ -39,6 +41,22 @@ public class ListenerAdmin implements ClickHandler {
 		if (id.equals("buttonLogs")){		
 			
 		}
+		
+		//**** PAGE MANAGE USER **** //
+		
+		if (id.equals("buttonAddUser")){		
+			System.out.println("je clique pour ajouter un utilisateur dans la base");
+		}
+		
+		if (id.equals("buttonModifyUser")){	
+			System.out.println("je clique pour modifier un utilisateur dans la base");
+			
+		}
+		
+		if (id.equals("buttonDeleteUser")){		
+			System.out.println("je clique pour supprimer un utilisateur dans la base");
+		}
+		
 
 	}
 
