@@ -2,6 +2,7 @@ package rie6.client.admin.vue;
 
 import java.util.List;
 
+import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
@@ -16,10 +17,15 @@ public class PageManageUser extends VerticalPanel{
 	public PageManageUser(ControllerAdmin controllerAdmin) {
 		
 		this.controllerAdmin = controllerAdmin;
+
+		Label label = new Label("test");
 		
-		Label label = new Label();
+		controllerAdmin.getListUser();
 		
-		//controllerAdmin.getListUser();
+		
+		
+		
+		//controllerAdmin.getAdminPortal().add(label,DockPanel.CENTER);
 	}
 
 }

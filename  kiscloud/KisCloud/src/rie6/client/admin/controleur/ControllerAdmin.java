@@ -20,6 +20,12 @@ public class ControllerAdmin {
 	public ControllerAdmin(){
 		
 	}
+	
+	
+
+	public AdminPortal getAdminPortal() {
+		return adminPortal;
+	}
 
 	public void setAdminPortal(AdminPortal adminPortal) {
 		this.adminPortal = adminPortal;
@@ -28,7 +34,7 @@ public class ControllerAdmin {
 	public void getListUser (){
 		
 		//Déclaration du service
-		RPCserviceAsync rpCserviceAsync = GWT.create(RPCservice.class);
+		RPCserviceAsync rpcServiceAsync = GWT.create(RPCservice.class);
 		
 		// Creation du callback pour recup la reponse serveur
 		AsyncCallback<List<User>> asyncCallback = new AsyncCallback<List<User>>() {
@@ -41,9 +47,12 @@ public class ControllerAdmin {
 			@Override
 			public void onSuccess(List<User> result) {
 				System.out.println(" le serveur me retourne un truc ");	
+				
 			}
 		};
 		
+		rpcServiceAsync.getListUser(asyncCallback);
+	
 	}
 	
 }
