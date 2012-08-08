@@ -26,7 +26,7 @@ public class AdminPortal extends DockPanel{
 
 		// Creation du panel de bouton pour manager la partie admin
 		MenuButton menuButton = new MenuButton(controllerAdmin);
-		
+		StackMenu stackMenu = new StackMenu(controllerAdmin);
 		
 		HorizontalPanel horizontalPanelTitre = new HorizontalPanel();
 		Label labelBandeau = new Label("PORTAL ADMINISTRATION");
@@ -39,6 +39,7 @@ public class AdminPortal extends DockPanel{
 		//placement des panels sur le portail
 		this.add(horizontalPanelTitre, DockPanel.NORTH); 	
 		this.add(menuButton,DockPanel.WEST);
+		//this.add(stackMenu,DockPanel.WEST);
 	
 	}
 

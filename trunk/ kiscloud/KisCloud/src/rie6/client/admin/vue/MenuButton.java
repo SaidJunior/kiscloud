@@ -14,7 +14,7 @@ public class MenuButton extends VerticalPanel{
 		this.controllerAdmin = controllerAdmin;
 		
 		this.setSize("200px", "500px");
-		this.setBorderWidth(5);
+		//this.setBorderWidth(5);
 		
 		Button buttonManageUser = new Button("MANAGE USERS");
 		buttonManageUser.addClickHandler(new ListenerAdmin("buttonManageUser", controllerAdmin));
