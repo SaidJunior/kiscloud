@@ -10,12 +10,14 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 
 import rie6.client.admin.model.User;
 import rie6.client.admin.vue.AdminPortal;
+import rie6.client.admin.vue.PageManageUser;
 import rie6.client.model.RPCservice;
 import rie6.client.model.RPCserviceAsync;
 
 public class ControllerAdmin {
 	
 	private AdminPortal adminPortal;
+	private PageManageUser pageManageUser;
 	
 	public ControllerAdmin(){
 		
@@ -46,12 +48,23 @@ public class ControllerAdmin {
 			@Override
 			public void onSuccess(List<User> result) {
 				System.out.println(" le serveur me retourne un truc (ControllerAdmin)");	
-				
+				setPageManageListUser(result);
 			}
 		};
 		
 		rpcServiceAsync.getListUser(asyncCallback);
 	
+	}
+
+
+	protected void setPageManageListUser(List<User> result) {
+		this.pageManageUser.setListUser(result);		
+	}
+
+
+	public void setPageManageListUser(PageManageUser pageManageUser) {
+		this.pageManageUser= pageManageUser;
+		
 	}
 	
 }

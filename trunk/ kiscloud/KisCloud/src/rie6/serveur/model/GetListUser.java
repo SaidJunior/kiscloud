@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import rie6.client.admin.model.User;
@@ -16,7 +17,7 @@ public class GetListUser {
 	private Connection connect = null;
 	private Statement statement = null;
 	private ResultSet resultSet;
-	private List<User> listInfoBase;
+	private List<User> listInfoBase=new ArrayList<User>();
 
 	public GetListUser(ControleurServeur controleurServeur){
 		
@@ -25,19 +26,18 @@ public class GetListUser {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			
 	         // init de la connexion
-	        connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/kiscloud?user=root&password="+controleurServeur.getMdpBDD());
+	        connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/KISCLOUD?user=root&password="+controleurServeur.getMdpBDD());
 	        // Statements pour authoriser les requettes SQL
 	        statement = connect.createStatement();
 	        // ecriture et execution de la requete
-	        resultSet = statement.executeQuery("select * from kiscloud.USERS");
+	        resultSet = statement.executeQuery("select * from KISCLOUD.USERS");
 	   
 	        while(resultSet.next()){
-	        	System.out.println(" Je remplis ma liste d'utilisateur (GetListUser) ");
+	        	//System.out.println(" Je remplis ma liste d'utilisateur (GetListUser) ");
 	        	User user = new User(resultSet.getString("id_user"),resultSet.getString("login_user"),resultSet.getString("mdp_user"),resultSet.getString("nom_user"),resultSet.getString("prenom_user"),resultSet.getString("mail_user"),resultSet.getString("status_user"));
 	        	listInfoBase.add(user);
 	        }
-	        
-	        
+	                
 
 		} catch (SQLException e) {
 			

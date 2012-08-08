@@ -22,6 +22,8 @@ public class PageManageUser extends DockPanel{
 		this.controllerAdmin = controllerAdmin;
 		this.setSize("800px", "800px");
 		
+		this.controllerAdmin.setPageManageListUser(this);
+		
 		HorizontalPanel panelButtonToManageUser = new HorizontalPanel();
 		panelButtonToManageUser.setHorizontalAlignment(ALIGN_RIGHT);
 		
@@ -42,9 +44,15 @@ public class PageManageUser extends DockPanel{
 		
 		controllerAdmin.getListUser();
 		
-		
-		
 		controllerAdmin.getAdminPortal().add(this,DockPanel.CENTER);
+	}
+
+	public void setListUser(List<User> result) {
+		for(User user : result){
+			System.out.println(user.getLogin());
+			
+		}
+		
 	}
 
 }
