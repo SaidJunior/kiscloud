@@ -8,6 +8,7 @@ import rie6.client.model.MyPopup;
 import rie6.client.model.MyUser;
 import rie6.client.model.RPCservice;
 import rie6.client.model.RPCserviceAsync;
+import rie6.client.vue.ClientPortal;
 import rie6.client.vue.LoginPage;
 
 import com.google.gwt.core.client.GWT;
@@ -20,7 +21,7 @@ public class ControleurPrincipal {
 	//		Variables
 	//*************************************	
 	MyUser user;
-	
+	ClientPortal clientPortal;
 	/**
 	 * Effectue un appel RPC sur le serveur pour tester le cookie.
 	 * Si c'est ok on affiche la page d'acceuil sinon le formulaire de login
@@ -131,11 +132,14 @@ public class ControleurPrincipal {
 	protected void AffichePageAcceuilClient() {
 		//TODO Nico: faire la page accueil client
 		System.out.println("j'affiche l'interface client");
+		RootPanel.get().clear();
+		clientPortal = new ClientPortal(this);
+		RootPanel.get().add(clientPortal);
 	}
 
 
 	protected void AffichePageAcceuilAdmin() {
-		// TODO Sylvain:  rediriger vers  MVC administration
+		
 		System.out.println("je vais afficher la page d'administration");
 		
 		//rootpanel.get.clean
@@ -143,6 +147,24 @@ public class ControleurPrincipal {
 		ControllerAdmin controllerAdmin = new ControllerAdmin();
 		AdminPortal adminPortal = new AdminPortal(controllerAdmin);
 		RootPanel.get().add(adminPortal);
+		
+	}
+
+	//*************************************
+	//		Getter et setter
+	//*************************************	
+	public MyUser getUser() {
+		return user;
+	}
+
+	/**
+	 * Decoonect le client de l'interface
+	 */
+	public void logout() {
+		this.clientPortal.setVisible(false);
+		Date expires = new Date(System.currentTimeMillis()) ;
+		Cookies.setCookie("KisCloud", "null", expires, null, "/", false);
+		RootPanel.get().add(new LoginPage(this));
 		
 	}
 

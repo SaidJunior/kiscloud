@@ -2,7 +2,9 @@
 .panelAdminPortal {
 	background-color:#F8F8FF;
     overflow:auto;
-    margin
+    margin-left: auto;
+	margin-right: auto;
+	width: 1024;
 }
 
 .menuButton{
