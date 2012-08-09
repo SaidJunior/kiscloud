@@ -24,14 +24,6 @@ public class ControllerAdmin {
 	}
 	
 	
-	public AdminPortal getAdminPortal() {
-		return adminPortal;
-	}
-
-	public void setAdminPortal(AdminPortal adminPortal) {
-		this.adminPortal = adminPortal;
-	}
-
 	public void getListUser (){
 		
 		//Déclaration du service
@@ -64,6 +56,17 @@ public class ControllerAdmin {
 	public void setPageManageListUser(PageManageUser pageManageUser) {
 		this.pageManageUser= pageManageUser;
 		
+	}
+	
+	
+	//*****  GETTEURS SETTEURS ******//
+	
+	public AdminPortal getAdminPortal() {
+		return adminPortal;
+	}
+
+	public void setAdminPortal(AdminPortal adminPortal) {
+		this.adminPortal = adminPortal;
 	}
 	
 }

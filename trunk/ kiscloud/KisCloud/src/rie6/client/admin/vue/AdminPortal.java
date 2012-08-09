@@ -18,29 +18,22 @@ public class AdminPortal extends DockPanel{
 		
 		this.controllerAdmin = controllerAdmin;
 		controllerAdmin.setAdminPortal(this);
-		
 	
-		this.setSize("1000px", "800px");
 		this.setBorderWidth(5);
 		this.setStyleName("panelAdminPortal");
 
 		// Creation du panel de bouton pour manager la partie admin
 		MenuButton menuButton = new MenuButton(controllerAdmin);
-		StackMenu stackMenu = new StackMenu(controllerAdmin);
-		
+	
 		HorizontalPanel horizontalPanelTitre = new HorizontalPanel();
+		horizontalPanelTitre.setStyleName("headBandPresentation");
 		Label labelBandeau = new Label("PORTAL ADMINISTRATION");
-		
 		horizontalPanelTitre.add(labelBandeau);
-		horizontalPanelTitre.setHeight("20px");
-		horizontalPanelTitre.setWidth("100px");
-		labelBandeau.setHorizontalAlignment(ALIGN_CENTER);
-		
+
 		//placement des panels sur le portail
 		this.add(horizontalPanelTitre, DockPanel.NORTH); 	
 		this.add(menuButton,DockPanel.WEST);
-		//this.add(stackMenu,DockPanel.WEST);
-	
+		
 	}
 
 }
