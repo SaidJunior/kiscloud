@@ -20,27 +20,30 @@ public class PageManageUser extends DockPanel{
 	public PageManageUser(ControllerAdmin controllerAdmin) {
 		
 		this.controllerAdmin = controllerAdmin;
-		this.setSize("800px", "800px");
+		this.setStyleName("pageManageUser");
 		
 		this.controllerAdmin.setPageManageListUser(this);
-		
-		HorizontalPanel panelButtonToManageUser = new HorizontalPanel();
-		panelButtonToManageUser.setHorizontalAlignment(ALIGN_RIGHT);
+				
+		HorizontalPanel panelMenuManageUser = new HorizontalPanel();
+		panelMenuManageUser.setStyleName("panelMenuManageUser");
 		
 		Button buttonAddUser = new Button("Add User");
+		buttonAddUser.setStyleName("buttonManageUser");
 		buttonAddUser.addClickHandler(new ListenerAdmin("buttonAddUser", controllerAdmin));
 		
 		Button buttonModifyUser = new Button("Modify");
+		buttonModifyUser.setStyleName("buttonManageUser");
 		buttonModifyUser.addClickHandler(new ListenerAdmin("buttonModifyUser", controllerAdmin));
 		
 		Button buttonDeleteUser = new Button("Delete");
+		buttonDeleteUser.setStyleName("buttonManageUser");
 		buttonDeleteUser.addClickHandler(new ListenerAdmin("buttonDeleteUser", controllerAdmin));
 		
-		panelButtonToManageUser.add(buttonAddUser);
-		panelButtonToManageUser.add(buttonModifyUser);
-		panelButtonToManageUser.add(buttonDeleteUser);
+		panelMenuManageUser.add(buttonAddUser);
+		panelMenuManageUser.add(buttonModifyUser);
+		panelMenuManageUser.add(buttonDeleteUser);
 		
-		this.add(panelButtonToManageUser,DockPanel.NORTH);
+		this.add(panelMenuManageUser,DockPanel.NORTH);
 		
 		controllerAdmin.getListUser();
 		
