@@ -100,11 +100,29 @@
 	
 }
 
-
 .gridTitle{
 	
 	width: 800px;
 	height: 50px;
-	margin: auto;
-	background-color: yellow;
+/* 	margin: auto; */
+	border: 1px solid #BBBBBB;
+/* 	padding: 3px; */
+/* 	background-color: yellow; */
 }
+.gridDataBase{
+	width: 800px;
+	height: 800px;
+	padding: 3px;
+	margin: auto;
+}
+
+.cw-FlexTable td {
+  border: 1px solid #BBBBBB;
+  padding: 3px;
+}
+
+.cw-FlexTable-buttonPanel td {
+  border: 0px;
+}
+
+

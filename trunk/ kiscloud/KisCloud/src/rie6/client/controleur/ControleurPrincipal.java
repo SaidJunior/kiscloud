@@ -140,7 +140,7 @@ public class ControleurPrincipal {
 
 	protected void AffichePageAcceuilAdmin() {
 		
-		System.out.println("je vais afficher la page d'administration");
+		System.out.println("je vais afficher la page d'administration (ControleurPrincipal)");
 		
 		//rootpanel.get.clean
 		RootPanel.get().clear();
