@@ -11,7 +11,10 @@ public class GridTitle extends Grid{
 	
 	private List<String> listFields  = new ArrayList<String>();
 	
+	
+	
 	public GridTitle(){
+		
 		
 		this.setStyleName("gridTitle");
 		
