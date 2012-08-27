@@ -57,7 +57,7 @@ public class ListenerAdmin implements ClickHandler {
 			System.out.println("je clique pour supprimer un utilisateur dans la base");
 		}
 		
-
+		
 	}
 
 }
