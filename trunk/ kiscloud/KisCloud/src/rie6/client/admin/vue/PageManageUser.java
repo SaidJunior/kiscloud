@@ -15,6 +15,7 @@ import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
@@ -55,9 +56,7 @@ public class PageManageUser extends VerticalPanel{
 		panelMenuManageUser.add(buttonAddUser);
 		panelMenuManageUser.add(buttonModifyUser);
 		panelMenuManageUser.add(buttonDeleteUser);
-		
-		//this.add(panelMenuManageUser,DockPanel.NORTH);
-		
+				
 		controllerAdmin.getListUser();
 		
 		// Met la page "PageManageUser" sur le DockePanel principal
@@ -69,83 +68,68 @@ public class PageManageUser extends VerticalPanel{
 		
 		System.out.println("J'ajoute ma grid pour la DataBase (PanelManageUser)");
 		
+		
+		ScrollPanel scrollPanel = new ScrollPanel();
+	    scrollPanel.setSize("800", "800");    
+		
 		FlexTable tableDataBaseUser = new FlexTable();
 		tableDataBaseUser.setStyleName("gridDataBase");
 		tableDataBaseUser.setBorderWidth(2);
-		
+		scrollPanel.add(tableDataBaseUser);
+
 		FlexCellFormatter cellFormatter = tableDataBaseUser.getFlexCellFormatter();
 		//tableDataBaseUser.addStyleName("cw-FlexTable");
 
+		HorizontalPanel panelButtonControlDataBase = new HorizontalPanel();
+		Button buttonAddUser = new Button("AddUser");
 
-		for(int nbRow=0 ; nbRow < result.size() ; nbRow ++){
-			for (int nbCol=0 ; nbCol<=8; nbCol ++){
+		buttonAddUser.addClickHandler(new ListenerAdmin("buttonAddUser", controllerAdmin));
+		
+		
+		tableDataBaseUser.setWidget(0, 0,  new Label("ID" ));
+		tableDataBaseUser.setWidget(0, 1,  new Label("Login"));
+		tableDataBaseUser.setWidget(0, 2,  new Label("Password" ));
+		tableDataBaseUser.setWidget(0, 3,  new Label("Name" ));
+		tableDataBaseUser.setWidget(0, 4,  new Label("First Name" ));
+		tableDataBaseUser.setWidget(0, 5,  new Label("Mail" ));
+		tableDataBaseUser.setWidget(0, 6,  new Label("Status" ));
+		
+		for(int nbRow=1 ; nbRow < result.size() ; nbRow ++){
+			for (int nbCol=0 ; nbCol<8; nbCol ++){
+
 				
-				
-							/*******  Titre de la Base de Données *******/
-				if(nbRow == 0 && nbCol== 0 ){
-					tableDataBaseUser.setWidget(nbRow, nbCol,  new Label("ID" ));
-				}
-				
-				if(nbRow == 0 && nbCol== 1 ){
-					tableDataBaseUser.setWidget(nbRow, nbCol,  new Label("Login"));
-				}
-				
-				if(nbRow == 0 && nbCol== 2 ){
-					tableDataBaseUser.setWidget(nbRow, nbCol,  new Label("Password" ));
-				}
-				
-				if(nbRow == 0 && nbCol== 3 ){
-					tableDataBaseUser.setWidget(nbRow, nbCol,  new Label("Name" ));
+				if(nbCol== 0){
 				}
 				
-				if(nbRow == 0 && nbCol== 4 ){
-					tableDataBaseUser.setWidget(nbRow, nbCol,  new Label("First Name" ));
+				if(nbCol== 1){
+
 				}
+				if(nbCol== 2){
+
+				}
+				if(nbCol== 3){
+	
+				}
+				if(nbCol== 4){
+
+				}
+				if(nbCol== 5){
+			
+				}
+				if(nbCol== 6){
 				
-				if(nbRow == 0 && nbCol== 5 ){
-					tableDataBaseUser.setWidget(nbRow, nbCol,  new Label("Mail" ));
 				}
-				
-				if(nbRow == 0 && nbCol== 6 ){
-					tableDataBaseUser.setWidget(nbRow, nbCol,  new Label("Status" ));
-				}
-				
-							/************************************/
-				
-				
-								/*********  DATA *********/
-				if(nbRow !=0 && nbCol== 1){
-				
-				}
-				
-				if(nbRow !=0 && nbCol== 2){
-					
-				}
-				if(nbRow !=0 && nbCol== 3){
-					
-				}
-				if(nbRow !=0 && nbCol== 4){
-					
-				}
-				if(nbRow !=0 && nbCol== 5){
-					
-				}
-				if(nbRow !=0 && nbCol== 6){
-					
-				}
-				if(nbRow !=0 && nbCol== 7){
-					Button buttonModifyUser = new Button("Modify");
-					tableDataBaseUser.setWidget(nbRow, 7,  buttonModifyUser = new Button("Modify"));	
-				}
-				if(nbRow !=0 && nbCol== 8){
-					Button buttonDeleteUserButton = new Button ("Delete");
-					tableDataBaseUser.setWidget(nbRow, 8, buttonDeleteUserButton );	
+				if(nbCol== 7){
+					Button buttonModify = new Button("Modify");
+					buttonModify.addClickHandler(new ListenerAdmin("buttonModify", controllerAdmin));
+					tableDataBaseUser.setWidget(nbRow, 7, buttonModify );
 				}
 			}	
 			
 		}
-		
-		this.add(tableDataBaseUser);
+		this.add(buttonAddUser);
+		this.add(scrollPanel);
+//		this.add(tableDataBaseUser);
 		
 //		for(User user : result){
 //			
