@@ -121,7 +121,7 @@ public class PageManageUser extends VerticalPanel{
 				}
 				if(nbCol== 7){
 					Button buttonModify = new Button("Modify");
-					buttonModify.addClickHandler(new ListenerAdmin("buttonModify", controllerAdmin));
+					buttonModify.addClickHandler(new ListenerAdmin("buttonModifyUser", controllerAdmin));
 					tableDataBaseUser.setWidget(nbRow, 7, buttonModify );
 				}
 			}	
