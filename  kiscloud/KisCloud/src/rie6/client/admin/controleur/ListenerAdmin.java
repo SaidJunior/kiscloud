@@ -45,6 +45,16 @@ public class ListenerAdmin implements ClickHandler {
 
         }
 
+        //**** POPUP DIALOG **** //
+
+        if (id.equals("buttonClosePanelAddUser")) {
+            System.out.println("je clique pour fermer la dialogBox pour ajouter un User");
+            Button buttonCloseAddUser = (Button) e.getSource();
+
+            PopUpDialog popUpDialog = (PopUpDialog) buttonCloseAddUser.getParent();
+
+        }
+
         //**** PAGE MANAGE USER **** //
 
         if (id.equals("buttonAddUser")) {
@@ -52,8 +62,9 @@ public class ListenerAdmin implements ClickHandler {
 
             Button buttonAdd = (Button) e.getSource();
             PageManageUser pageManageUser = (PageManageUser) buttonAdd.getParent();
+            pageManageUser.setVisible(false);
 
-            PopUpDialog popUpDialog = new PopUpDialog();
+            PopUpDialog popUpDialog = new PopUpDialog(controllerAdmin);
 
             popUpDialog.center();
             popUpDialog.show();
