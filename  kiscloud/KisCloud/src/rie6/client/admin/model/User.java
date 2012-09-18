@@ -3,92 +3,87 @@ package rie6.client.admin.model;
 import com.google.gwt.user.client.rpc.IsSerializable;
 
 public class User implements IsSerializable {
-	
-	private String id;
-	private String login;
-	private String mdp;
-	private String prenom;
-	private String nom;
-	private String mail;
-	private String status;
-	
-	//pour la serialisation
-	public User(){
-		
-	}
-	
-	public User (String id, String login, String mdp, String nom, String prenom, String mail, String status){
-		
-		this.id = id;
-		this.login = login;
-		this.prenom = prenom;
-		this.mail = mail;
-		this.nom = nom;
-		this.status = status;	
-	}
 
-	
-	//*****  GETTEURS ****
-	
-	public String getId() {
-		return id;
-	}
+    private String id;
+    private String login;
+    private String mdp;
+    private String prenom;
+    private String nom;
+    private String mail;
+    private String status;
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    //pour la serialisation
+    public User() {
 
-	public String getLogin() {
-		return login;
-	}
+    }
 
-	public void setLogin(String login) {
-		this.login = login;
-	}
+    public User(String id, String login, String mdp, String nom, String prenom, String mail, String status) {
 
-	public String getMdp() {
-		return mdp;
-	}
+        this.id = id;
+        this.login = login;
+        this.prenom = prenom;
+        this.mail = mail;
+        this.mdp = mdp;
+        this.nom = nom;
+        this.status = status;
+    }
 
-	public void setMdp(String mdp) {
-		this.mdp = mdp;
-	}
+    //*****  GETTEURS ****
 
-		
-	public String getNom() {
-		return nom;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
+    public String getLogin() {
+        return login;
+    }
 
-	public String getPrenom() {
-		return prenom;
-	}
+    public void setLogin(String login) {
+        this.login = login;
+    }
 
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
+    public String getMdp() {
+        return mdp;
+    }
 
-	public String getMail() {
-		return mail;
-	}
+    public void setMdp(String mdp) {
+        this.mdp = mdp;
+    }
 
-	public void setMail(String mail) {
-		this.mail = mail;
-	}
+    public String getNom() {
+        return nom;
+    }
 
-	public String getStatus() {
-		return status;
-	}
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+    public String getPrenom() {
+        return prenom;
+    }
 
-	
-	
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
 }
-
