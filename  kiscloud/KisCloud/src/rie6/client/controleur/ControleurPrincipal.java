@@ -130,7 +130,6 @@ public class ControleurPrincipal {
 	}
 
 	protected void AffichePageAcceuilClient() {
-		//TODO Nico: faire la page accueil client
 		System.out.println("j'affiche l'interface client");
 		RootPanel.get().clear();
 		clientPortal = new ClientPortal(this);
@@ -165,6 +164,32 @@ public class ControleurPrincipal {
 		Date expires = new Date(System.currentTimeMillis()) ;
 		Cookies.setCookie("KisCloud", "null", expires, null, "/", false);
 		RootPanel.get().add(new LoginPage(this));
+		
+	}
+
+	/**
+	 * Affiche le conteneur avec la liste des VM de l'uttilisateur
+	 */
+	public void showListVM() {
+		
+		
+	}
+
+	/**
+	 * affiche une fenetre avec les disque dur rattachée a la vm qui a l'identifiant BBD id
+	 * @param id id BBD de la VM
+	 */
+	public void showDiskVMof(int id) {
+		// TODO afficher menu disque dur
+		
+	}
+
+	/**
+	 * Demande d'arret ou de demarage de la VM suivant son etat actuel
+	 * @param id id BBD de la VM
+	 */
+	public void startOrStopThisVM(int id) {
+		// TODO vérifier l'etat actuel et appeler le script qui va bien
 		
 	}
 
