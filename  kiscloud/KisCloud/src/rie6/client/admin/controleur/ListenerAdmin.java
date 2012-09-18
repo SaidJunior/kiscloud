@@ -53,6 +53,11 @@ public class ListenerAdmin implements ClickHandler {
             Button buttonAdd = (Button) e.getSource();
             PageManageUser pageManageUser = (PageManageUser) buttonAdd.getParent();
 
+            PopUpDialog popUpDialog = new PopUpDialog();
+
+            popUpDialog.center();
+            popUpDialog.show();
+
         }
 
         if (id.equals("buttonModifyUser")) {

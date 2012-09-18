@@ -115,6 +115,15 @@
 	margin: auto;
 }
 
+.dialogBox{
+	background-color:#FFFF00;
+    overflow:auto;
+    height:200px;
+	width: 100px;
+	margin: auto;
+	
+}
+
 .cw-FlexTable td {
   border: 1px solid #BBBBBB;
   padding: 3px;
