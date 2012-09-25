@@ -1,13 +1,16 @@
 <?php
-include ("ssh-core.php");
 
-$sshCore = new SSHcore("192.168.56.20", "22", null);
-$sshCore->init_connection();
-$sshCore->connect_password("root", "azerty");
-echo $sshCore->exec("cat /proc/self/maps ; pwd ; ls -l");
+include_once ("include/global.php");
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+$node = new Node();
+$nodeDelegate = new NodeDelegate($node);
+
+$nodeDelegate->getNodeRequirement();
+
+if($node->getVtd_enabled()){
+    echo "VT-d enabled on this host with: ".$node->getVtd_type()."<br />";
+}else{
+    echo "VT-d not active on this host...<br />";
+}
+
 ?>

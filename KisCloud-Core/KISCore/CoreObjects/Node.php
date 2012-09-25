@@ -10,17 +10,17 @@
  *
  * @author clement
  */
-class CoreNode extends CoreObjects{
+class Node extends CoreObjects {
+
     //put your code here
-    
+
     private $vtd_enabled = null;
     private $vtd_type = null;
-    
+
     public function __construct() {
         parent::__construct();
-        
     }
-    
+
     public function getVtd_enabled() {
         return $this->vtd_enabled;
     }
