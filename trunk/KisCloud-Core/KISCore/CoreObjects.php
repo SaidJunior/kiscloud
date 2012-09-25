@@ -11,7 +11,7 @@
  * @author clement
  */
 
-include 'CoreObjects/CoreNode.php';
+include_once 'CoreObjects/Node.php';
 
 class CoreObjects {
     //put your code here

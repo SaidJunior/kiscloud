@@ -10,7 +10,7 @@
  *
  * @author clement
  */
-include 'SSHParser/ParserVTD.php';
+include_once 'SSHParser/ParserVTD.php';
 
 abstract class SSHParser {
 

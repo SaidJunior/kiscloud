@@ -1,6 +1,6 @@
 <?php
 
-class SSHcore {
+class SSHConnector {
 
     // SSH Host 
     private $ssh_host = null;
