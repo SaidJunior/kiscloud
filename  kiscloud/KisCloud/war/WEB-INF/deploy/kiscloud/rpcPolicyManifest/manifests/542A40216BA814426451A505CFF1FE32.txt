@@ -1,2 +1,0 @@
-serviceClass: rie6.client.model.RPCservice
-path: 9F1239F114836ADCC8443334E5DB4D80.gwt.rpc
