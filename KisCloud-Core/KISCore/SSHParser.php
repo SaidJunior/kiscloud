@@ -11,6 +11,7 @@
  * @author clement
  */
 include_once 'SSHParser/ParserVTD.php';
+include_once 'SSHParser/ParserCentOS.php';
 
 abstract class SSHParser {
 

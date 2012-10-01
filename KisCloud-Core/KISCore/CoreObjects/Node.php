@@ -13,7 +13,9 @@
 class Node extends CoreObjects {
 
     //put your code here
-
+    
+    private $valid_centos = null;
+    private $centos_version = null;
     private $vtd_enabled = null;
     private $vtd_type = null;
 
@@ -21,6 +23,22 @@ class Node extends CoreObjects {
         parent::__construct();
     }
 
+    public function getValid_centos() {
+        return $this->valid_centos;
+    }
+
+    public function setValid_centos($valid_centos) {
+        $this->valid_centos = $valid_centos;
+    }
+
+    public function getCentos_version() {
+        return $this->centos_version;
+    }
+
+    public function setCentos_version($centos_version) {
+        $this->centos_version = $centos_version;
+    }
+    
     public function getVtd_enabled() {
         return $this->vtd_enabled;
     }

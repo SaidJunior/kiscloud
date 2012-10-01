@@ -29,7 +29,9 @@ class NodeDelegate extends KisCore {
         $parserVTD->parseExec_output();
         
         //Test CentOS
-        
+        $paserCentOS = new ParserCentOS($this->getCoreObject());
+        $paserCentOS->setExec_output($sshConnector->exec("cat /etc/redhat-release"));
+        $paserCentOS->parseExec_output();
     }
 
 }
