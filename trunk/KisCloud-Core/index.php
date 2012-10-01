@@ -13,4 +13,10 @@ if($node->getVtd_enabled()){
     echo "VT-d not active on this host...<br />";
 }
 
+if($node->getValid_centos()){
+    echo "CentOS version: ".$node->getCentos_version()."<br />";
+}else{
+    echo "No CentOS 6.x OS<br />";
+}
+
 ?>
