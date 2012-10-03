@@ -12,6 +12,7 @@
  */
 
 include_once 'Delegate/NodeDelegate.php';
+include_once 'Delegate/DiskDelegate.php';
 
 abstract class KisCore {
     
