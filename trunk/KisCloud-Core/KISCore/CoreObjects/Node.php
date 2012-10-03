@@ -21,6 +21,7 @@ class Node extends CoreObjects {
     private $centos_version = null;
     private $vtd_enabled = null;
     private $vtd_type = null;
+    private $arch64bit = null;
 
     private $nfs_folder_created = false;
     private $nfs_configured = false;
@@ -107,6 +108,14 @@ class Node extends CoreObjects {
 
     public function setNfs_configured($nfs_configured) {
         $this->nfs_configured = $nfs_configured;
+    }
+    
+    public function getArch64bit() {
+        return $this->arch64bit;
+    }
+
+    public function setArch64bit($arch64bit) {
+        $this->arch64bit = $arch64bit;
     }
 
 }

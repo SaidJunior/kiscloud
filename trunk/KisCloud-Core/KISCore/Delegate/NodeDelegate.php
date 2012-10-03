@@ -44,6 +44,9 @@ class NodeDelegate extends KisCore {
         $paserCentOS->parseExec_output();
 
         //Test x86_64
+        $paserArch64 = new ParserArch64($this->getCoreObject());
+        $paserArch64->setExec_output($sshConnector->exec("uname -a"));
+        $paserArch64->parseExec_output();
         //Test RPCBind
         //Test nfs-utils
         //Test 

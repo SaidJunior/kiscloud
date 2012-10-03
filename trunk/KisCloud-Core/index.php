@@ -23,6 +23,12 @@ if($node->getValid_centos()){
     echo "No CentOS 6.x OS<br />";
 }
 
+if($node->getArch64bit()){
+    echo "64 bit kernel supported: ".$node->getArch64bit()."<br />";
+}else{
+    echo "64 bit kernel not supported<br />";
+}
+
 $disk = new Disk();
 $diskDelegate = new DiskDelegate($disk);
 $diskDelegate->createDisk("tata01", 20, "/tmp");
