@@ -119,7 +119,7 @@ class SSHConnector {
         $this->connect();
         $this->ssh_server_fp = ssh2_fingerprint($this->connection);
     }
-    
+
     public function connect_password($ssh_auth_user, $ssh_auth_pass) {
         $this->check_fp = true;
         $this->ssh_auth_user = $ssh_auth_user;
@@ -148,12 +148,33 @@ class SSHConnector {
         if (!($stream = ssh2_exec($this->connection, $cmd))) {
             throw new Exception('SSH command failed');
         }
+        $errorStream = ssh2_fetch_stream($stream, SSH2_STREAM_STDERR);
+        
+        stream_set_blocking($errorStream, true);
         stream_set_blocking($stream, true);
-        $data = "";
+
+//        echo "Output: " . stream_get_contents($stream);
+//        echo "Error: " . stream_get_contents($errorStream);
+        
+        $data_out = "";
+        $data_error = "";
+        $data_statusCode = null;
+
         while ($buf = fread($stream, 4096)) {
-            $data .= $buf;
+            $data_out .= $buf;
         }
         fclose($stream);
+
+        while ($buf = fread($errorStream, 4096)) {
+            $data_error .= $buf;
+        }
+        fclose($errorStream);
+        
+        $data = array();
+        $data["out"]=$data_out;
+        $data["error"]=$data_error;
+        $data["staus_code"]=$data_statusCode;
+        
         return $data;
     }
 
