@@ -17,7 +17,6 @@ class DiskDelegate extends KisCore {
     }
     
     public function createDisk($name, $size, $path){
-        
         $localExec = new LocalExec();
         
         $this->getCoreObject()->setName($name);

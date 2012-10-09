@@ -6,23 +6,19 @@
  */
 
 /**
- * Description of CoreNode
+ * Description of Manager
  *
  * @author clement
  */
-class Node extends CoreObjects {
-
-    //put your code here
+class Manager extends CoreObjects {
+    
     private $ip = null;
     private $ssh_fingerprint = null;
     private $ssh_username = null;
     private $ssh_password = null;
     private $valid_centos = null;
     private $centos_version = null;
-    private $vtd_enabled = null;
-    private $vtd_type = null;
-    private $arch64bit = null;
-
+    
     private $nfs_folder_created = false;
     private $nfs_configured = false;
     private $nfs_folder_mounted = false;
@@ -79,22 +75,6 @@ class Node extends CoreObjects {
         $this->centos_version = $centos_version;
     }
     
-    public function getVtd_enabled() {
-        return $this->vtd_enabled;
-    }
-
-    public function setVtd_enabled($vtd_enabled) {
-        $this->vtd_enabled = $vtd_enabled;
-    }
-
-    public function getVtd_type() {
-        return $this->vtd_type;
-    }
-
-    public function setVtd_type($vtd_type) {
-        $this->vtd_type = $vtd_type;
-    }
-    
     public function getNfs_folder_created() {
         return $this->nfs_folder_created;
     }
@@ -111,14 +91,6 @@ class Node extends CoreObjects {
         $this->nfs_configured = $nfs_configured;
     }
 
-    public function getArch64bit() {
-        return $this->arch64bit;
-    }
-
-    public function setArch64bit($arch64bit) {
-        $this->arch64bit = $arch64bit;
-    }
-    
     public function getNfs_folder_mounted() {
         return $this->nfs_folder_mounted;
     }
@@ -126,7 +98,7 @@ class Node extends CoreObjects {
     public function setNfs_folder_mounted($nfs_folder_mounted) {
         $this->nfs_folder_mounted = $nfs_folder_mounted;
     }
-
+    
 }
 
 ?>
