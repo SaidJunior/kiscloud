@@ -10,7 +10,7 @@
  *
  * @author clement
  */
-class NodeDelegate extends KisCore {
+class ManagerDelegate extends KisCore {
 
     //put your code here
 
@@ -18,7 +18,7 @@ class NodeDelegate extends KisCore {
         parent::__construct($coreObject);
     }
 
-    public function getNodeRequirement($ip, $ssh_username, $ssh_password) {
+    public function getManagerRequirement($ip, $ssh_username, $ssh_password) {
 
         $this->getCoreObject()->setIp($ip);
         $this->getCoreObject()->setSsh_username($ssh_username);
@@ -32,27 +32,17 @@ class NodeDelegate extends KisCore {
 
         $sshConnector->connect_password($ssh_username, $ssh_password);
 
-        //Test VT-d
-        $parserVTD = new ParserVTD($this->getCoreObject());
-        //$parserVTD->setExec_output($sshConnector->exec("grep -E 'svm|vmx' /proc/cpuinfo"));
-        $parserVTD->setExec_output($sshConnector->exec("cat /proc/cpuinfo"));
-        $parserVTD->parseExec_output();
-
         //Test CentOS
         $parserCentOS = new ParserCentOS($this->getCoreObject());
         $parserCentOS->setExec_output($sshConnector->exec("cat /etc/redhat-release"));
         $parserCentOS->parseExec_output();
-
-        //Test x86_64
-        $parserArch64 = new ParserArch64($this->getCoreObject());
-        $parserArch64->setExec_output($sshConnector->exec("uname -a"));
-        $parserArch64->parseExec_output();
+        
         //Test RPCBind
         //Test nfs-utils
         //Test 
     }
 
-    public function installNodeRequirement($ip, $ssh_username, $ssh_password, $ssh_fingerprint) {
+    public function installManagerRequirement($ip, $ssh_username, $ssh_password, $ssh_fingerprint) {
         $sshConnector = new SSHConnector($ip, "22", $ssh_fingerprint);
         $sshConnector->connect_password($ssh_username, $ssh_password);
 
