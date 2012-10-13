@@ -1,7 +1,9 @@
 <!-- Partie Manage Users --> 
-    <div id="users" class="tab-pane active" >	
+    <div id="users" class="tab-pane" >
+        
+         <p>Section Manage Users.</p>	
         <!-- bouton d'ajout d'un utilisateur -->
-         <?php include("php/formulaire/formulaireAddUser.php"); ?>
+        <?php include("php/formulaire/formulaireAddUser.php"); ?>
         <?php include("php/formulaire/formulaireModifyUser.php"); ?>
         <?php include("php/formulaire/formulaireDeleteUser.php"); ?>
          <a class="btn btn-primary" href="#myModal"  role="button" class="btn" data-toggle="modal">Add User</a>	

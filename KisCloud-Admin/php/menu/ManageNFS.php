@@ -85,7 +85,7 @@
 
                     <div class="control-group">
                         <div class="controls">      
-                            <button class="btn btn-primary" onclick="saveNFS()" id="buttonSaveNFS" data-dismiss="modal" aria-hidden="true">Save</button>
+                            <button class="btn btn-primary" onclick="saveNFS()" id="buttonSaveNFS" data-dismiss="modal" aria-hidden="true">Save NFS</button>
  
                         </div>
                     </div>

@@ -128,7 +128,7 @@
                                         if(msg>0){
                                             $('#myModal').modal();
                                             $('#myModal').modal('hide');
-                                            addRow(msg,login,password,name,firstname,mail,status);               
+                                            addRow(msg,login,password,name,firstname,mail,status); 
 					}else{
 						alert("echec de l'ajout de la ligne");		
 					}
