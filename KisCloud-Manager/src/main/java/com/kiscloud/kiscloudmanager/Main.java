@@ -18,7 +18,8 @@ public class Main
     
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
         Main main = new Main();
+        KisCore kisCore = new KisCore();
+        kisCore.ssh_init("147.171.79.215", "k!scl0ud-20122");
     }
 }
