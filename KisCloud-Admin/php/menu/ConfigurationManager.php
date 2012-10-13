@@ -28,7 +28,7 @@
                                url: "php/formulaire/addManager.php", 
                                data: "login_Manager="+login_Manager+"&password_Manager="+password_Manager,
                                success: function(msg){
-                                   alert('azerty');
+                                   $('#console').html(msg);
                                }
                       });
                 }else{
@@ -48,7 +48,7 @@
                             url: "php/formulaire/addNFS.php", 
                             data: "ip_NFS="+ip_NFS+"&path_NFS="+path_NFS,
                              success: function(msg){
-                                 alert('azerty');
+                                 $('#console').html(msg);
                              }
                     });
                 
@@ -63,7 +63,7 @@
        
         <div id="confManager" class="tab-pane active">
             
-                <form class="form-horizontal">
+                <div class="form-horizontal">
 
                         <!--  *** MANAGER *** -->
                     
@@ -88,12 +88,12 @@
 
                     <div class="control-group">
                         <div class="controls">      
-                            <button class="btn btn-primary" onclick="saveManager()" id="buttonSaveNFS" data-dismiss="modal" aria-hidden="true">Save Manager</button>
+                            <button class="btn btn-primary" onclick="saveManager()" id="buttonSaveNFS" >Save Manager</button>
                         </div>
                     </div>
-                </form>
+                </div>
             
-            <form class="form-horizontal">  
+            <div class="form-horizontal">  
                 
                     <!-- *** NFS *** -->
                   <div class="control-group">
@@ -120,6 +120,6 @@
                     </div>
                </div>  
                 
-            </form>
+            </div>
      </div>
 
