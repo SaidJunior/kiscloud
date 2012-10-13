@@ -12,7 +12,6 @@ $PATH = $_SERVER['DOCUMENT_ROOT']."/ssh";
  */
 
 include_once $PATH.'/KISCore/Connectors/SSHConnector.php';
-include_once $PATH.'/KISCore/Connectors/LocalExec.php';
 include_once $PATH.'/KISCore/KisCore.php';
 include_once $PATH.'/KISCore/SSHParser.php';
 include_once $PATH.'/KISCore/CoreObjects.php';
