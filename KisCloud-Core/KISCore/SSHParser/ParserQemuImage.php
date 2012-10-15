@@ -6,27 +6,30 @@
  */
 
 /**
- * Description of ParserArch64
+ * Description of ParserQemuImage
  *
  * @author Anthony
  */
-class ParserArch64 extends SSHParser {
+class ParserQemuImage extends SSHParser {
 
+    
     //put your code here
     public function __construct($coreObject) {
         parent::__construct($coreObject);
     }
 
     public function parseExec_output() {
-        $pattern = '/x86_64/i';
+
+        $pattern = '/qemu-img/';
+
         preg_match($pattern, $this->getExec_output(), $matches);
-        //print_r($matches);
-        if (count($matches) == 0) {
-            //64 bit kernel not supported
-            $this->getCoreObject()->setArch64bit(FALSE);
+        //echo $this->getExec_output().'<br />';
+        print_r($matches);
+        echo "<br />";
+        if (count($matches) != 0) {
+            $this->getCoreObject()->setQemu_image(true);
         } else {
-            //64 bit kernel supported
-            $this->getCoreObject()->setArch64bit(TRUE);
+            $this->getCoreObject()->setQemu_image(false);
         }
     }
 
