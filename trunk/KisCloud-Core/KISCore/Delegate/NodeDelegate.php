@@ -49,15 +49,24 @@ class NodeDelegate extends KisCore {
         $parserArch64->parseExec_output();
         //Test RPCBind
         //Test nfs-utils
-        //Test 
+        //Test Qemu-image
+        $paserQemuImg = new ParserQemuImage($this->getCoreObject()); //$out = array();
+        $paserQemuImg->setExec_output($sshConnector->exec("rpm -qa", $out)); //print_r($out);
+        $paserQemuImg->parseExec_output();
     }
 
     public function installNodeRequirement($ip, $ssh_username, $ssh_password, $ssh_fingerprint) {
+        echo "Processor emulator not found. Installing Qemu..." . "<br />";
         $sshConnector = new SSHConnector($ip, "22", $ssh_fingerprint);
         $sshConnector->connect_password($ssh_username, $ssh_password);
-
         //need to complete with qemu hypervisor
         //yum install -y nfs-utils rpcbind qemu-img
+        //Installation de l'hyperviseur et test
+        $sshConnector->exec("yum install -y qemu-img");
+        $paserQemuImg = new ParserQemuImage($this->getCoreObject()); //$out = array();
+        $paserQemuImg->setExec_output($sshConnector->exec("rpm -qa", $out)); //print_r($out);
+        $paserQemuImg->parseExec_output();
+        
     }
 
     public function checkNFSConfiguration($ip, $ssh_username, $ssh_password, $ssh_fingerprint, $ip_nfsServer, $path) {

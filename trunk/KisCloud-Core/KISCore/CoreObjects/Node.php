@@ -21,7 +21,8 @@ class Node extends CoreObjects {
     private $centos_version = null;
     private $vtd_enabled = null;
     private $vtd_type = null;
-    private $arch64bit = null;
+    private $arch64bit = false;
+    private $qemu_image = false;
 
     private $nfs_folder_created = false;
     private $nfs_configured = false;
@@ -118,6 +119,16 @@ class Node extends CoreObjects {
     public function setArch64bit($arch64bit) {
         $this->arch64bit = $arch64bit;
     }
+
+    
+    public function getQemu_image(){
+        return $this->qemu_image;
+    }
+    
+    public function setQemu_image($qemu_image){
+        $this->qemu_image = $qemu_image;
+    }
+
     
     public function getNfs_folder_mounted() {
         return $this->nfs_folder_mounted;

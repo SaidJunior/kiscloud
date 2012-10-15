@@ -13,6 +13,7 @@
 include_once 'SSHParser/ParserVTD.php';
 include_once 'SSHParser/ParserCentOS.php';
 include_once 'SSHParser/ParserArch64.php';
+include_once 'SSHParser/ParserQemuImage.php';
 include_once 'SSHParser/ParserDiskCreate.php';
 include_once 'SSHParser/ParserNFSConfiguration.php';
 include_once 'SSHParser/ParserNFSFolder.php';
