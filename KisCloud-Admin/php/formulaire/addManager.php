@@ -4,8 +4,7 @@
     $password_Manager = $_POST["password_Manager"];
  
 //      //connexion à la base
-       $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
-       $bdd = new PDO('mysql:host=localhost;dbname=KISCLOUD', 'root', 'p@ssw0rd', $pdo_options);
+        include("../menu/connectDataBase.php");
        
 
            $requeteDeleteManager = $bdd->query("use KISCLOUD; SET SQL_SAFE_UPDATES=0; Delete from MANAGER ;");
