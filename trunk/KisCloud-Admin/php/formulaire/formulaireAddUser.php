@@ -41,10 +41,7 @@
         var cell6 = row.insertCell(6);
         cell6.innerHTML = status;
                         
-        //                        var cell7 = row.insertCell(7);
-        //                        cell7.innerHTML = "<a class=\"btn btn-primary\">Modify </a>"; 
-                       
-                        
+              
         // Bouton de controle
         var cell8 = row.insertCell(8);
         cell8.innerHTML = "<a class=\"btn btn-primary\">Delete</a>"; 
@@ -125,17 +122,19 @@
                         //addRow(msg,login,password,name,firstname,mail,status);
                         getAjaxUsers();
                     }else{
-                        alert("echec de l'ajout de la ligne");		
+                        alert('User has not been inserted');
                     }
       
                 }
             });
         }else{
-            alert("Unable to create user, please check fields");
+            $('#consoleAddUser').html("<div class=\"alert alert-error\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\">x</button>Unable to create this user, please check parameters</div>");
         };     
     }
 
-</script>    
+</script>  
+
+<div id="consoleAddUser"></div>
 
 <form name="formulaire" action="#" id="formulaire" class="form-horizontal">
 
