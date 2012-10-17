@@ -5,7 +5,7 @@
  * and open the template in the editor.
  */
 
-$PATH = $_SERVER['DOCUMENT_ROOT']."/ssh/";
+$PATH = $_SERVER['DOCUMENT_ROOT']."/kiscloud/core/";
 
 /*
  * Include Core Objects
