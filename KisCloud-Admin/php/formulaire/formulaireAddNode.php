@@ -1,16 +1,3 @@
-<?php ?>
-
-<script type="text/javascript">
-    
-    function addNode() {
-        
-        alert("Je clique pour sauver le noeud");
-    
-    }
-
-    
-</script>
-
 <form name="formulaire" action="#" id="formulaire" class="form-horizontal">
 
     <!-- IP -->
