@@ -47,18 +47,35 @@ class NodeDelegate extends KisCore {
         $parserArch64 = new ParserArch64($this->getCoreObject());
         $parserArch64->setExec_output($sshConnector->exec("uname -a"));
         $parserArch64->parseExec_output();
-        //Test rpcbind
+
+        
         //Test nfs-utils
+        $parserNfsUtils = new ParserNfsUtils($this->getCoreObject());
+        $parserNfsUtils->setExec_output($sshConnector->exec("rpm -qa"));
+        $parserNfsUtils->parseExec_output();
+        
+        //Bridge-utils
+        $parserBridgeUtils = new ParserBridgeUtils($this->getCoreObject());
+        $parserBridgeUtils->setExec_output($sshConnector->exec("rpm -qa"));
+        $parserBridgeUtils->parseExec_output();
+        
+        
         //Test qemu-image
-        $paserQemuImg = new ParserQemuImage($this->getCoreObject()); 
-        $paserQemuImg->setExec_output($sshConnector->exec("rpm -qa"));
-        $paserQemuImg->parseExec_output();
+        $parserQemuImg = new ParserQemuImage($this->getCoreObject());
+        $parserQemuImg->setExec_output($sshConnector->exec("rpm -qa"));
+        $parserQemuImg->parseExec_output();
+        
+        //Test rpcbind
+        $parserRpcbind = new ParserRpcbind($this->getCoreObject());
+        $parserRpcbind->setExec_output($sshConnector->exec("rpm -qa"));
+        $parserRpcbind->parseExec_output();
     }
 
     public function installNodeRequirement($ip, $ssh_username, $ssh_password, $ssh_fingerprint) {
         $sshConnector = new SSHConnector($ip, "22", $ssh_fingerprint);
         $sshConnector->connect_password($ssh_username, $ssh_password);
         //need to complete with qemu hypervisor
+        //add the bridge-utils install commande
         //yum install -y nfs-utils rpcbind qemu-img
         $sshConnector->exec("yum install -y nfs-utils rpcbind qemu-img");
     }
