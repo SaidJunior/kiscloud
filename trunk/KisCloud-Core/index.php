@@ -5,7 +5,7 @@ include_once ("include/global.php");
 $node = new Node();
 $nodeDelegate = new NodeDelegate($node);
 
-$nodeDelegate->getNodeRequirement("192.168.56.10", "root", "azerty");
+$nodeDelegate->getNodeRequirement("192.168.56.20", "root", "azerty");
 
 echo "Ip: " . $node->getIp() . "<br />";
 echo "SSH Fingerprint: " . $node->getSsh_fingerprint() . "<br />";
@@ -35,6 +35,7 @@ if ($node->getQemu_image()) {
     echo "Processor emulator not found. Installing Qemu...". "<br />";
     //Installing qemu hypervisor
     $nodeDelegate->installNodeRequirement("192.168.56.20", "root", "azerty");
+    echo $node->getQemu_image();
     if ($node->getQemu_image()){
         echo "Done<br />";
     } else {

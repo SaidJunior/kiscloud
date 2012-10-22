@@ -22,7 +22,11 @@ class Node extends CoreObjects {
     private $vtd_enabled = null;
     private $vtd_type = null;
     private $arch64bit = false;
+    
     private $qemu_image = false;
+    private $rpcbind = false;
+    private $nfs_utils = false;
+    private $bridge_utils = false;
 
     private $nfs_folder_created = false;
     private $nfs_configured = false;
@@ -136,6 +140,30 @@ class Node extends CoreObjects {
 
     public function setNfs_folder_mounted($nfs_folder_mounted) {
         $this->nfs_folder_mounted = $nfs_folder_mounted;
+    }
+    
+    public function getRpcbind(){
+        return $this->rpcbind;
+    }
+    
+    public function setRpcbind($rpcbind){
+        $this->rpcbind = $rpcbind;
+    }
+    
+    public function getNfs_utils(){
+        return $this->nfs_utils;
+    }
+    
+    public function setNfs_utils($nfs_utils){
+        $this->nfs_utils = $nfs_utils;
+    }
+    
+    public function setBridge_utils($bridge_utils){
+        $this->bridge_utils = $bridge_utils;
+    }
+    
+    public function getBridge_utils(){
+        return $this->bridge_utils;
     }
 
 }
