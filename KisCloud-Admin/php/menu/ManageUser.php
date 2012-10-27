@@ -2,11 +2,8 @@
 
 <?php
        include("connectDataBase.php");
-       
-          $requetNFS = $bdd->query("SELECT count(id_NFS) AS nbNFS FROM NFS; "); // requette pour recup le nombre de NFS
-          $nbFS = $requetNFS->fetch();
-          
-          $requetManager = $bdd->query("SELECT count(id_manager) AS nbManager FROM MANAGER; "); // requette pour recup le nombre de manager
+     
+          $requetManager = $bdd->query("SELECT count(id_manager) AS nbManager FROM MANAGER; "); // requete pour recup le nombre de manager
           $nbManager = $requetManager->fetch();
           
           if($nbFS['nbNFS'] == "1" && $nbManager['nbManager'] == "1"){     

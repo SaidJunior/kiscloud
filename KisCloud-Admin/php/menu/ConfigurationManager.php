@@ -1,5 +1,37 @@
 <!-- Partie Configuration Manager --> 
 
+<?php
+       include("connectDataBase.php");
+
+          $requetManager = $bdd->query("SELECT count(id_manager) AS nbManager FROM MANAGER; "); // requete pour recup le nombre de manager
+          $nbManager = $requetManager->fetch();
+          
+          $requetSelectManager = $bdd->query("SELECT * FROM MANAGER; "); // requete pour recup le nombre de manager
+          $resultSelectManager = $requetSelectManager->fetch();
+          
+          $loginManager = "root";
+          $ipNFS="";
+          $pathNFS="";
+
+          if($nbManager['nbManager'] > 0){     
+              $pwdManager = $resultSelectManager['ssh_password'];
+              $ipNFS_status = "" ;
+              $pwdNFS_status = "";
+              $loginManager = $resultSelectManager['ssh_login_manager'];
+
+              //requete SQL NFS
+              $requetSelectNFS = $bdd->query("SELECT * FROM NFS; "); // requete pour recup le nombre de manager
+              $resultSelectNFS = $requetSelectNFS->fetch();
+              $ipNFS= $resultSelectNFS['ip_nfs'];
+              $pathNFS= $resultSelectNFS['path_nfs'];
+  
+          }else{
+              $pwdManager = $resultSelectManager['ssh_password'];
+              $ipNFS_status = "disabled" ;
+              $pwdNFS_status = "disabled";
+          }     
+?>
+
 <script type="text/javascript">
 
     function checkManager(){
@@ -72,15 +104,6 @@
     }
             
     function saveNFS(){ 
-    
-    <?php
-       include("connectDataBase.php");
-          $requetManager = $bdd->query("SELECT count(id_manager) AS nbManager FROM MANAGER; "); // requette pour recup le nombre de manager
-          $nbManager = $requetManager->fetch();
-          
-          if ($nbManager['nbManager'] == "1"){     
-    ?>
-
                 if(checkFormNFS()==true){
 
                     var ip_NFS = document.getElementById("ipNFS").value;				
@@ -98,15 +121,6 @@
                 }else{
                        $('#consoleConfManager').html("<div class=\"alert alert-error\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\">x</button>please check NFS parameters</div>");
                     } 
-                    
-     <?php
-             } else {
-     ?>
-             $('#consoleConfManager').html("<div class=\"alert alert-error\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\">x</button>please enter a Manager before</div>");
-     <?php
-             } 
-     ?>
-   
     }
             
 
@@ -127,14 +141,14 @@
     <div class="control-group">
         <label class="control-label" for="loginManager">Login</label>
         <div class="controls">
-            <input type="text" id="loginManager" disabled="true" value="root">
+            <input type="text" id="loginManager" disabled value="<?php echo $loginManager;?>">
         </div>
     </div>
 
     <div class="control-group">
         <label class="control-label" for="passwordManager">Password</label>
         <div class="controls">
-            <input type="password" id="passwordManager" placeholder="">
+            <input type="password" id="passwordManager" placeholder="" value="<?php echo $pwdManager;?>">
         </div>
     </div>
 
@@ -155,14 +169,14 @@
     <div class="control-group">
         <label class="control-label" for="ipNFS">IP Address</label>
         <div class="controls">
-            <input type="text" id="ipNFS" disabled="true" placeholder="10.20.30.40">
+            <input type="text" id="ipNFS" <?php echo $ipNFS_status;?> placeholder="10.20.30.40" value="<?php echo $ipNFS;?>">
         </div>
     </div>
 
     <div class="control-group" >
         <label class="control-label" for="pathNFS">Path</label>
         <div class="controls">
-            <input type="text" id="pathNFS" disabled="true" placeholder="/opt/nfs/etc/.../">
+            <input type="text" id="pathNFS" <?php echo $pwdNFS_status;?> placeholder="/opt/nfs/etc/.../" value="<?php echo $pathNFS;?>">
         </div>
     </div>
 
@@ -173,4 +187,3 @@
     </div>  
 
 </div>
-
