@@ -250,6 +250,17 @@ if (isset($_SESSION['step_' . $session]) && isset($_SESSION['log_' . $session]))
 
         case 10:
             $_SESSION['log_' . $session] .= "<p class=\"text-warning\">Send request to the DB for add node</p>";
+            
+            //DB
+            $node->getIp();
+            $node->getSsh_username();
+            $node->getSsh_password();
+            $node->getSsh_fingerprint();
+            $node->getCentos_version();
+            $node->getVtd_type();
+            //$node->ram;
+            //$node->nbproc;
+            
             $_SESSION['log_' . $session] .= "<p class=\"text-success\">Node Added in the infrastructure</p>";
             $JS_LOAD .= "<script type=\"text/javascript\">
                         finished=true;

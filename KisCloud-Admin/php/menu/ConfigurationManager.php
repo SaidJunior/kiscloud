@@ -113,31 +113,7 @@
 
 </script>
 
-<div id="consoleConfManager">
-
-<!--    <div class="modal hide fade" id="confManagerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="myModalLabel">Modal google</h3>
-        </div>
-        <div class="modal-body">
-
-        </div>
-        <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-            <button class="btn btn-primary">Save changes</button>
-        </div>
-    </div>
-
-    <script type="text/javascript">
-        $('#confManagerModal').modal({
-            show: false,
-            keyboard: false,
-            remote: 'php/formulaire/test.php'
-        })
-    </script>-->
-
-</div>
+<div id="consoleConfManager"></div>
 
 <div class="form-horizontal">
 
