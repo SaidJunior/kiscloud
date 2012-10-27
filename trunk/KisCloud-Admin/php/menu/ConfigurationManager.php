@@ -54,14 +54,15 @@
         if(checkManager()== true){
             var login_Manager = document.getElementById("loginManager").value;				
             var password_Manager= document.getElementById("passwordManager").value;
-
-  
+            
             $.ajax({ 
                 type: "POST", 
                 url: "php/formulaire/addManager.php", 
                 data: "login_Manager="+login_Manager+"&password_Manager="+password_Manager,
                 success: function(msg){
                     $('#consoleConfManager').html(msg);
+                    $('#ipNFS').attr('disabled', false);
+                    $('#pathNFS').attr('disabled', false);           
                 }
             });
         }else{
@@ -71,23 +72,40 @@
     }
             
     function saveNFS(){ 
-    if(checkFormNFS()==true){
+    
+    <?php
+       include("connectDataBase.php");
+          $requetManager = $bdd->query("SELECT count(id_manager) AS nbManager FROM MANAGER; "); // requette pour recup le nombre de manager
+          $nbManager = $requetManager->fetch();
+          
+          if ($nbManager['nbManager'] == "1"){     
+    ?>
 
-        var ip_NFS = document.getElementById("ipNFS").value;				
-        var path_NFS= document.getElementById("pathNFS").value;
+                if(checkFormNFS()==true){
 
-  
-        $.ajax({ 
-            type: "POST", 
-            url: "php/formulaire/addNFS.php", 
-            data: "ip_NFS="+ip_NFS+"&path_NFS="+path_NFS,
-            success: function(msg){
-                $('#consoleConfManager').html(msg);
-            }
-        });
-    }else{
-           $('#consoleConfManager').html("<div class=\"alert alert-error\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\">x</button>please check NFS parameters</div>");
-        }            
+                    var ip_NFS = document.getElementById("ipNFS").value;				
+                    var path_NFS= document.getElementById("pathNFS").value;
+
+
+                    $.ajax({ 
+                        type: "POST", 
+                        url: "php/formulaire/addNFS.php", 
+                        data: "ip_NFS="+ip_NFS+"&path_NFS="+path_NFS,
+                        success: function(msg){
+                            $('#consoleConfManager').html(msg);
+                        }
+                    });
+                }else{
+                       $('#consoleConfManager').html("<div class=\"alert alert-error\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\">x</button>please check NFS parameters</div>");
+                    } 
+                    
+     <?php
+             } else {
+     ?>
+             $('#consoleConfManager').html("<div class=\"alert alert-error\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\">x</button>please enter a Manager before</div>");
+     <?php
+             } 
+     ?>
    
     }
             
@@ -161,14 +179,14 @@
     <div class="control-group">
         <label class="control-label" for="ipNFS">IP Address</label>
         <div class="controls">
-            <input type="text" id="ipNFS" placeholder="10.20.30.40">
+            <input type="text" id="ipNFS" disabled="true" placeholder="10.20.30.40">
         </div>
     </div>
 
-    <div class="control-group">
+    <div class="control-group" >
         <label class="control-label" for="pathNFS">Path</label>
         <div class="controls">
-            <input type="text" id="pathNFS" placeholder="/opt/nfs/etc/.../">
+            <input type="text" id="pathNFS" disabled="true" placeholder="/opt/nfs/etc/.../">
         </div>
     </div>
 

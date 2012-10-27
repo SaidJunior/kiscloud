@@ -109,7 +109,7 @@ if ($nbFS['nbNFS'] == "1" && $nbManager['nbManager'] == "1") {
     </script>
 
 
-    <a class="btn btn-primary" href="#modalAddNode"  role="button" class="btn" data-remote="php/formulaire/formulaireAddNode.php" data-toggle="modal">Add Node</a>
+    <a class="btn btn-success" href="#modalAddNode"  role="button" class="btn" data-remote="php/formulaire/formulaireAddNode.php" data-toggle="modal">Add Node</a>
 
     <!--   ** MODAL ADD NODE ** -->
 
@@ -155,7 +155,7 @@ if ($nbFS['nbNFS'] == "1" && $nbManager['nbManager'] == "1") {
         </div>
         <div class="modal-footer">
             <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-            <button onclick="deleteNode()" class="btn btn-primary">Delete User</button>
+            <button onclick="deleteNode()" class="btn btn-danger">Delete User</button>
         </div>
     </div>
 
