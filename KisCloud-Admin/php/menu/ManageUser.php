@@ -37,7 +37,7 @@
 
 
 <!-- bouton d'ajout d'un utilisateur -->
-<a class="btn btn-primary" href="#myModalAddUser"  role="button" class="btn" data-remote="php/formulaire/formulaireAddUser.php" data-toggle="modal">Add User</a>	
+<a class="btn btn-success" href="#myModalAddUser"  role="button" class="btn" data-remote="php/formulaire/formulaireAddUser.php" data-toggle="modal">Add User</a>	
 
 <!--   ** MODAL ADD USER ** -->
 
@@ -105,7 +105,7 @@
                 <td><?php echo $resultListUsers['prenom_user']; ?></td>
                 <td><?php echo $resultListUsers['mail_user']; ?></td>
                 <td><?php echo $resultListUsers['status_user']; ?></td>
-                <td><a class="btn btn-primary" href="#myModalDeleteUser" onclick="confirmdeleteUser(<?php echo $resultListUsers['id_user']; ?>,<?php echo $numRow; ?>)" role="button" class="btn">Delete</a></td>
+                <td><a class="btn btn-danger" href="#myModalDeleteUser" onclick="confirmdeleteUser(<?php echo $resultListUsers['id_user']; ?>,<?php echo $numRow; ?>)" role="button" class="btn">Delete</a></td>
             </tr>	
 
             <?php
