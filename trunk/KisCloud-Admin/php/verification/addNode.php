@@ -3,6 +3,8 @@
 session_start();
 
 include_once '../../../core/include/global.php';
+include("../menu/connectDataBase.php");
+
 
 $session = "";
 $JS_LOAD = "";
@@ -252,12 +254,20 @@ if (isset($_SESSION['step_' . $session]) && isset($_SESSION['log_' . $session]))
             $_SESSION['log_' . $session] .= "<p class=\"text-warning\">Send request to the DB for add node</p>";
             
             //DB
-            $node->getIp();
-            $node->getSsh_username();
-            $node->getSsh_password();
-            $node->getSsh_fingerprint();
-            $node->getCentos_version();
-            $node->getVtd_type();
+            
+            //connexion à la base
+
+	// insertion		
+	   $bdd->query("INSERT INTO NOEUD VALUES(default,'$node->getIp();','$node->getSsh_username();','$node->getSsh_password();','$node->getSsh_fingerprint();','null','$node->getCentos_version();','$node->getVtd_type();',null,null);");
+            
+//            $node->getIp();
+//            $node->getSsh_username();
+//            $node->getSsh_password();
+//            $node->getSsh_fingerprint();
+//            $node->getCentos_version();
+//            $node->getVtd_type();
+            
+            
             //$node->ram;
             //$node->nbproc;
             
