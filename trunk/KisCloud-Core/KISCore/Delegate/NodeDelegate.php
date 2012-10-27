@@ -77,7 +77,7 @@ class NodeDelegate extends KisCore {
         //need to complete with qemu hypervisor
         //add the bridge-utils install commande
         //yum install -y nfs-utils rpcbind qemu-img
-        $sshConnector->exec("yum install -y nfs-utils rpcbind qemu-img");
+        $sshConnector->exec("yum install -y nfs-utils rpcbind qemu-img bridge-utils");
     }
 
     public function checkNFSConfiguration($ip, $ssh_username, $ssh_password, $ssh_fingerprint, $ip_nfsServer, $path) {
@@ -130,6 +130,13 @@ class NodeDelegate extends KisCore {
         $sshConnector->connect_password($ssh_username, $ssh_password);
 
         $sshConnector->exec("mount /opt/KISCloud/nfs/");
+    }
+    
+    public function umountNFSMountPoint($ip, $ssh_username, $ssh_password, $ssh_fingerprint) {
+        $sshConnector = new SSHConnector($ip, "22", $ssh_fingerprint);
+        $sshConnector->connect_password($ssh_username, $ssh_password);
+
+        $sshConnector->exec("umount /opt/KISCloud/nfs/");
     }
 
 }
