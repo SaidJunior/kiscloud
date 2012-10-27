@@ -17,6 +17,11 @@ class ManagerDelegate extends KisCore {
     public function __construct($coreObject) {
         parent::__construct($coreObject);
     }
+    
+    public function checkSSHConnection($ip, $ssh_username, $ssh_password) {
+        $sshConnector = new SSHConnector($ip, "22", null);
+        $sshConnector->init_connection();
+    }
 
     public function getManagerRequirement($ip, $ssh_username, $ssh_password) {
 
