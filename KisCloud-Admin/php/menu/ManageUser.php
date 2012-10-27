@@ -1,14 +1,16 @@
 <!-- Partie Manage Users --> 
 
 <?php
-       include("connectDataBase.php");
-     
-          $requetManager = $bdd->query("SELECT count(id_manager) AS nbManager FROM MANAGER; "); // requete pour recup le nombre de manager
-          $nbManager = $requetManager->fetch();
-          
-          if($nbFS['nbNFS'] == "1" && $nbManager['nbManager'] == "1"){     
-?>
+include("connectDataBase.php");
 
+$requetNFS = $bdd->query("SELECT count(id_NFS) AS nbNFS FROM NFS; "); // requette pour recup le nombre de NFS
+$nbFS = $requetNFS->fetch();
+
+$requetManager = $bdd->query("SELECT count(id_manager) AS nbManager FROM MANAGER; "); // requette pour recup le nombre de manager
+$nbManager = $requetManager->fetch();
+
+if ($nbFS['nbNFS'] == "1" && $nbManager['nbManager'] == "1") {
+    ?>
 <script type="text/javascript">
     //initialisation
     var id_user_to_delete;
@@ -115,11 +117,9 @@
 <?php
           }else{
         ?>
-            <p>
-                 <h4> Impossible to manage node until Manager and NFS are not informed</h4>
-
-                <h4> Please check <b>"Configuration Manager"</b></h4>
-            </p>
+        <div class="alert alert-error">
+             <button type="button" class="close" data-dismiss="alert">x</button>please check Manager or NFS parameters
+        </div>
 
        <?php 
        
