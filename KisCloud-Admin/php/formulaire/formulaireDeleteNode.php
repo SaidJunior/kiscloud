@@ -18,7 +18,7 @@
                 if(msg>0){    
                     //document.getElementById('database').deleteRow(numRowToDelete);
                     $('#modalDeleteNode').modal('hide');
-                    getAjaxUsers();
+                    getAjaxNode();
                 }else{
                     $('#console').html("<div class=\"alert alert-error\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\">x</button><h4>Error</h4> can't delete this node</div>");			
                 }

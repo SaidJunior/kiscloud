@@ -14,6 +14,8 @@
 include_once 'Delegate/NodeDelegate.php';
 include_once 'Delegate/ManagerDelegate.php';
 include_once 'Delegate/DiskDelegate.php';
+include_once 'Delegate/UserDelegate.php';
+include_once 'Delegate/VMDelegate.php';
 
 abstract class KisCore {
     
