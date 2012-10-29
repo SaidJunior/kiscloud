@@ -26,14 +26,14 @@ class ParserVTD extends SSHParser {
             if (count($matches)>0) {
                 //SVM Virtualisation
                 $this->getCoreObject()->setVtd_enabled(true);
-                $this->getCoreObject()->setVtd_type("svm");
+                $this->getCoreObject()->setVtd_type("AMD");
             }else{
                 $this->getCoreObject()->setVtd_enabled(false);
             }
         } else {
             //VMX virtualisation
             $this->getCoreObject()->setVtd_enabled(true);
-            $this->getCoreObject()->setVtd_type("vmx");
+            $this->getCoreObject()->setVtd_type("Intel");
         }
     }
 
