@@ -32,6 +32,9 @@ class Node extends CoreObjects {
     private $nfs_configured = false;
     private $nfs_folder_mounted = false;
     
+    private $memo_status = array();
+    //private $ram_total= null;
+    
     public function __construct() {
         parent::__construct();
     }
@@ -164,6 +167,14 @@ class Node extends CoreObjects {
     
     public function getBridge_utils(){
         return $this->bridge_utils;
+    }
+    
+    public function getMemo_status($index){
+        return $this->memo_status[$index];
+    }
+    
+    public function setMemo_status($memo_status){
+        $this->memo_status = $memo_status;
     }
 
 }

@@ -84,6 +84,13 @@ if ($node->getBridge_utils()) {
     } else {
         echo "Failed<br />";
     }
+    
 }
 
+$nodeDelegate->checkRAMUsage($ip, $ssh_username , $ssh_password, $ssh_fingerprint);
+echo "Memoire Total: " . $node->getMemo_status('MemTotal') . "<br />";
+//var_dump($node->getMemo_status());
+
+$nodeDelegate->checkRAMUsage($ip, $ssh_username , $ssh_password, $ssh_fingerprint);
+echo "Memoire Libre: " . $node->getMemo_status('MemFree') . "<br />";
 ?>

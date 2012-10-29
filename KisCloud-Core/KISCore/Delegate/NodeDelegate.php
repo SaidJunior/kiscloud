@@ -131,12 +131,23 @@ class NodeDelegate extends KisCore {
 
         $sshConnector->exec("mount /opt/KISCloud/nfs/");
     }
+
     
     public function umountNFSMountPoint($ip, $ssh_username, $ssh_password, $ssh_fingerprint) {
         $sshConnector = new SSHConnector($ip, "22", $ssh_fingerprint);
         $sshConnector->connect_password($ssh_username, $ssh_password);
 
         $sshConnector->exec("umount /opt/KISCloud/nfs/");
+    }
+
+    
+    public function checkRAMUsage($ip, $ssh_username, $ssh_password, $ssh_fingerprint){
+        $sshConnector = new SSHConnector($ip, "22", $ssh_fingerprint);
+        $sshConnector->connect_password($ssh_username, $ssh_password);
+        
+        $parserRAMUsage = new ParserRAMUsage($this->getCoreObject());
+        $parserRAMUsage->setExec_output($sshConnector->exec("cat /proc/meminfo"));
+        $parserRAMUsage->parseExec_output();
     }
 
 }
