@@ -174,9 +174,11 @@ if (isset($_SESSION['step_' . $session]) && isset($_SESSION['log_' . $session]))
             ////////////////////////////
             // Requete SQL Vers NFS
             ////////////////////////////
-            $ip_nfsServer = "192.168.56.10";
-            $path = "/opt/KISStorage/";
-            $_SESSION['log_' . $session] .= "<p class=\"text-warning\">Need to do SQL Request for NFS Config</p>";
+            $requetSelectNFS = $bdd->query("SELECT * FROM NFS; "); // requete pour recup le nombre de manager
+            $resultSelectNFS = $requetSelectNFS->fetch();
+            $ip_nfsServer = $resultSelectNFS['ip_nfs'];
+            $path = $resultSelectNFS['path_nfs'];
+
             ////////////////////////////
             $_SESSION['log_' . $session] .= "<p class=\"text-info\">Checking NFS Configuration...</p>";
             $nodeDelegate->checkNFSConfiguration($node->getIp(), $node->getSsh_username(), $node->getSsh_password(), $node->getSsh_fingerprint(), $ip_nfsServer, $path);
@@ -251,26 +253,16 @@ if (isset($_SESSION['step_' . $session]) && isset($_SESSION['log_' . $session]))
             break;
 
         case 10:
-            $_SESSION['log_' . $session] .= "<p class=\"text-warning\">Send request to the DB for add node</p>";
-            
-            //DB
-            
-            //connexion à la base
+            $_SESSION['log_' . $session] .= "<p class=\"text-info\">Add Node in the database...</p>";
 
-	// insertion		
-	   $bdd->query("INSERT INTO NOEUD VALUES(default,'$node->getIp();','$node->getSsh_username();','$node->getSsh_password();','$node->getSsh_fingerprint();','null','$node->getCentos_version();','$node->getVtd_type();',null,null);");
-            
-//            $node->getIp();
-//            $node->getSsh_username();
-//            $node->getSsh_password();
-//            $node->getSsh_fingerprint();
-//            $node->getCentos_version();
-//            $node->getVtd_type();
-            
-            
+            //DB
+            //connexion à la base
+            // insertion		
+            $bdd->query("INSERT INTO NOEUD VALUES(default,'" . $node->getIp() . "','" . $node->getSsh_username() . "','" . $node->getSsh_password() . "','" . $node->getSsh_fingerprint() . "','null','" . $node->getCentos_version() . "','" . $node->getVtd_type() . "',null,null);");
             //$node->ram;
             //$node->nbproc;
-            
+            $_SESSION['log_' . $session] .= "<p class=\"text-success\">Node added in the database.</p>";
+
             $_SESSION['log_' . $session] .= "<p class=\"text-success\">Node Added in the infrastructure</p>";
             $JS_LOAD .= "<script type=\"text/javascript\">
                         finished=true;
