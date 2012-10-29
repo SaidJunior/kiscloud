@@ -181,17 +181,17 @@ if ($nbFS['nbNFS'] == "1" && $nbManager['nbManager'] == "1") {
 
             $requetListNode = $bdd->query("SELECT * FROM NOEUD; "); // requette pour recup la liste des utilisateurs
             $numRow = 1;
-            while ($requetListNode = $requetListNode->fetch()) {// pour chaque ligne de la reponse
+            while ($resultListNode = $requetListNode->fetch()) {// pour chaque ligne de la reponse
                 ?> 
 
                 <tr>
-                    <td><?php echo $requetListNode['ip_noeud']; ?></td>
-                    <td><?php echo $requetListNode['ram_noeud']; ?></td>
-                    <td><?php echo $requetListNode['nb_proc_noeud']; ?></td>
-                    <td><?php echo $requetListNode['ssh_login_node']; ?></td>
-                    <td><?php echo $requetListNode['ssh_password_node']; ?></td>
-                    <td><?php echo $requetListNode['status_node']; ?></td>
-                    <td><a class="btn btn-primary" href="#modalDeleteNode" onclick="confirmDeleteNode(<?php echo $resultListUsers['id_user']; ?>,<?php echo $numRow; ?>)" role="button" class="btn">Delete</a></td>
+                    <td><?php echo $resultListNode['ip_noeud']; ?></td>
+                    <td><?php echo $resultListNode['ram_noeud']; ?></td>
+                    <td><?php echo $resultListNode['nb_proc_noeud']; ?></td>
+                    <td><?php echo $resultListNode['ssh_login_node']; ?></td>
+                    <td><?php echo $resultListNode['ssh_password_node']; ?></td>
+                    <td><?php echo $resultListNode['status_node']; ?></td>
+                    <td><a class="btn btn-primary" href="#modalDeleteNode" onclick="confirmDeleteNode(<?php echo $resultListNode['id_noeud']; ?>,<?php echo $numRow; ?>)" role="button" class="btn">Delete</a></td>
                 </tr>	
 
                 <?php
