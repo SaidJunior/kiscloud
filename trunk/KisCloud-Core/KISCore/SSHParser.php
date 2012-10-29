@@ -23,6 +23,7 @@ include_once 'SSHParser/ParserRpcbind.php';
 include_once 'SSHParser/ParserNfsUtils.php';
 include_once 'SSHParser/ParserBridgeUtils.php';
 include_once 'SSHParser/ParserRAMUsage.php';
+include_once 'SSHParser/ParserUserFolder.php';
 
 abstract class SSHParser {
 

@@ -32,8 +32,11 @@ class Node extends CoreObjects {
     private $nfs_configured = false;
     private $nfs_folder_mounted = false;
     
-    private $memo_status = array();
-    //private $ram_total= null;
+    private $ram_total = null;
+    private $ram_free = null;
+    
+    private $cpu_total = null;
+    private $cpu_free = null;
     
     public function __construct() {
         parent::__construct();
@@ -169,12 +172,36 @@ class Node extends CoreObjects {
         return $this->bridge_utils;
     }
     
-    public function getMemo_status($index){
-        return $this->memo_status[$index];
+    public function getRam_total() {
+        return $this->ram_total;
+    }
+
+    public function setRam_total($ram_total) {
+        $this->ram_total = $ram_total;
+    }
+
+    public function getRam_free() {
+        return $this->ram_free;
+    }
+
+    public function setRam_free($ram_free) {
+        $this->ram_free = $ram_free;
     }
     
-    public function setMemo_status($memo_status){
-        $this->memo_status = $memo_status;
+    public function getCpu_total() {
+        return $this->cpu_total;
+    }
+
+    public function setCpu_total($cpu_total) {
+        $this->cpu_total = $cpu_total;
+    }
+
+    public function getCpu_free() {
+        return $this->cpu_free;
+    }
+
+    public function setCpu_free($cpu_free) {
+        $this->cpu_free = $cpu_free;
     }
 
 }

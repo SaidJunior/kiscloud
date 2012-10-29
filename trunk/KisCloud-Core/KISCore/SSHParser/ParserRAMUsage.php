@@ -16,7 +16,8 @@ class ParserRAMUsage extends SSHParser {
             $meminfo[$key] = trim($val);
         }
         //return $meminfo;
-        $this->getCoreObject()->setMemo_status($meminfo);
+        $this->getCoreObject()->setRam_total($meminfo['MemTotal']);
+        $this->getCoreObject()->setRam_free($meminfo['MemFree']);
     }
 
 }

@@ -14,6 +14,8 @@
 include_once 'CoreObjects/Node.php';
 include_once 'CoreObjects/Manager.php';
 include_once 'CoreObjects/Disk.php';
+include_once 'CoreObjects/User.php';
+include_once 'CoreObjects/VM.php';
 
 class CoreObjects {
     //put your code here
