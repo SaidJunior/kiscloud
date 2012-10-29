@@ -164,10 +164,13 @@ if ($nbFS['nbNFS'] == "1" && $nbManager['nbManager'] == "1") {
         <thead>  
             <tr>
                 <th>@IP</th>
-                <th>RAM</th>
-                <th>Processes</th>
-                <th>Login</th>
-                <th>Password</th>
+                <th>Ram total</th>
+                <th>Ram free</th>
+                <th>CPU total</th>
+                <th>CPU free</th>
+                <th>Processor</th>
+                <th>CentOS version</th>
+                <th>virtual type</th>
                 <th>Status</th>
                 <th></th>						 
             </tr>
@@ -186,10 +189,13 @@ if ($nbFS['nbNFS'] == "1" && $nbManager['nbManager'] == "1") {
 
                 <tr>
                     <td><?php echo $resultListNode['ip_noeud']; ?></td>
-                    <td><?php echo $resultListNode['ram_noeud']; ?></td>
+                    <td><?php echo $resultListNode['ram_total']; ?></td>
+                    <td><?php echo $resultListNode['ram_free']; ?></td>
+                    <td><?php echo $resultListNode['cpu_total']; ?></td>
+                    <td><?php echo $resultListNode['cpu_free']; ?></td>
                     <td><?php echo $resultListNode['nb_proc_noeud']; ?></td>
-                    <td><?php echo $resultListNode['ssh_login_node']; ?></td>
-                    <td><?php echo $resultListNode['ssh_password_node']; ?></td>
+                    <td><?php echo $resultListNode['centOS_version']; ?></td>
+                    <td><?php echo $resultListNode['vtd_type']; ?></td>
                     <td><?php echo $resultListNode['status_node']; ?></td>
                     <td><a class="btn btn-primary" href="#modalDeleteNode" onclick="confirmDeleteNode(<?php echo $resultListNode['id_noeud']; ?>,<?php echo $numRow; ?>)" role="button" class="btn">Delete</a></td>
                 </tr>	
