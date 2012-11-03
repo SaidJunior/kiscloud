@@ -149,6 +149,15 @@ class NodeDelegate extends KisCore {
         $parserRAMUsage->setExec_output($sshConnector->exec("cat /proc/meminfo"));
         $parserRAMUsage->parseExec_output();
     }
+    
+    public function checkCPUUsage($ip, $ssh_username, $ssh_password, $ssh_fingerprint){
+        $sshConnector = new SSHConnector($ip, "22", $ssh_fingerprint);
+        $sshConnector->connect_password($ssh_username, $ssh_password);
+        
+        $parserCPUUsage = new ParserCPUUsage($this->getCoreObject());
+        $parserCPUUsage->setExec_output($sshConnector->exec("top -b -n1"));
+        $parserCPUUsage->parseExec_output();
+    }
 
 }
 
