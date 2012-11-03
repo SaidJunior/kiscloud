@@ -203,7 +203,7 @@ class Node extends CoreObjects {
     public function setCpu_free($cpu_free) {
         $this->cpu_free = $cpu_free;
     }
-
+   
 }
 
 ?>

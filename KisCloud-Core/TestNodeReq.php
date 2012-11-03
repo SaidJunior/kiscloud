@@ -93,4 +93,8 @@ echo "Memoire Total: " . $node->getRam_total() . "<br />";
 
 $nodeDelegate->checkRAMUsage($ip, $ssh_username , $ssh_password, $ssh_fingerprint);
 echo "Memoire Libre: " . $node->getRam_free() . "<br />";
+
+
+$nodeDelegate->checkCPUUsage($ip, $ssh_username, $ssh_password, $ssh_fingerprint);
+echo "CPU libre: " . $node->getCpu_free() . "<br />";
 ?>
