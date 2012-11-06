@@ -22,6 +22,8 @@ class Manager extends CoreObjects {
     private $nfs_folder_created = false;
     private $nfs_configured = false;
     private $nfs_folder_mounted = false;
+    private $nfs_disk_size = null;
+    private $nfs_disk_free = null;
     
     public function __construct() {
         parent::__construct();
@@ -97,6 +99,22 @@ class Manager extends CoreObjects {
 
     public function setNfs_folder_mounted($nfs_folder_mounted) {
         $this->nfs_folder_mounted = $nfs_folder_mounted;
+    }
+    
+    public function getNfs_disk_size() {
+        return $this->nfs_disk_size;
+    }
+
+    public function setNfs_disk_size($nfs_disk_size) {
+        $this->nfs_disk_size = $nfs_disk_size;
+    }
+
+    public function getNfs_disk_free() {
+        return $this->nfs_disk_free;
+    }
+
+    public function setNfs_disk_free($nfs_disk_free) {
+        $this->nfs_disk_free = $nfs_disk_free;
     }
     
 }
