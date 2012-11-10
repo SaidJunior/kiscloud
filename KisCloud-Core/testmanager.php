@@ -59,4 +59,8 @@ if ($manager->getNfs_folder_mounted()) {
         echo "Failed<br />";
     }
 }
+
+$managerDelegate->checkNFSDisk($ip_nfsServer, $ssh_username, $ssh_password, $ssh_fingerprint);
+echo "Total NFS disk space (Mo): " . $manager->getNfs_disk_size() . "<br />";
+echo "Free NFS disk space (Mo): " . $manager->getNfs_disk_free() . "<br />";
 ?>

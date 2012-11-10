@@ -37,7 +37,9 @@ class Node extends CoreObjects {
     
     private $cpu_total = null;
     private $cpu_free = null;
-    
+    private $cpu_speed = null;
+
+
     public function __construct() {
         parent::__construct();
     }
@@ -204,6 +206,13 @@ class Node extends CoreObjects {
         $this->cpu_free = $cpu_free;
     }
    
+    public function getCpu_speed(){
+        return $this->cpu_speed;
+    }
+    
+    public function setCpu_speed($cpu_speed){
+        $this->cpu_speed = $cpu_speed;
+    }
 }
 
 ?>

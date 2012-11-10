@@ -16,8 +16,12 @@ class ParserRAMUsage extends SSHParser {
             $meminfo[$key] = trim($val);
         }
         //return $meminfo;
-        $this->getCoreObject()->setRam_total($meminfo['MemTotal']);
-        $this->getCoreObject()->setRam_free($meminfo['MemFree']);
+        //removes the KB then...
+        //...conversion en Mega Octet en division par 1024
+        $tmp = (explode (" ", $meminfo['MemTotal']));
+        $this->getCoreObject()->setRam_total(intval(($tmp[0]) / 1024));
+        $tmp = (explode (" ", $meminfo['MemFree']));
+        $this->getCoreObject()->setRam_free(intval(($tmp[0]) / 1024));
     }
 
 }

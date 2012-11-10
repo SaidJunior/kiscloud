@@ -25,6 +25,8 @@ include_once 'SSHParser/ParserBridgeUtils.php';
 include_once 'SSHParser/ParserRAMUsage.php';
 include_once 'SSHParser/ParserUserFolder.php';
 include_once 'SSHParser/ParserCPUUsage.php';
+include_once 'SSHParser/ParserNFSDisk.php';
+include_once 'SSHParser/ParserCPUInfo.php';
 
 abstract class SSHParser {
 

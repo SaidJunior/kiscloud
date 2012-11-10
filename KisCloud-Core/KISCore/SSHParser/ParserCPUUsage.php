@@ -13,7 +13,7 @@ class ParserCPUUsage extends SSHParser {
         $data2 = explode(',', $data[2]);
         $cpuinfo = explode("%", $data2[3]);
         $cpu_libre = $cpuinfo[0];
-
+        
         $this->getCoreObject()->setCpu_free($cpu_libre);
     }
 }
