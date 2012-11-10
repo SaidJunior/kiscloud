@@ -17,7 +17,7 @@ class ManagerDelegate extends KisCore {
     public function __construct($coreObject) {
         parent::__construct($coreObject);
     }
-    
+
     public function checkSSHConnection($ip, $ssh_username, $ssh_password) {
         $sshConnector = new SSHConnector($ip, "22", null);
         $sshConnector->init_connection();
@@ -41,7 +41,7 @@ class ManagerDelegate extends KisCore {
         $parserCentOS = new ParserCentOS($this->getCoreObject());
         $parserCentOS->setExec_output($sshConnector->exec("cat /etc/redhat-release"));
         $parserCentOS->parseExec_output();
-        
+
         //Test RPCBind
         //Test nfs-utils
         //Test 
@@ -106,12 +106,21 @@ class ManagerDelegate extends KisCore {
 
         $sshConnector->exec("mount /opt/KISCloud/nfs/");
     }
-    
+
     public function umountNFSMountPoint($ip, $ssh_username, $ssh_password, $ssh_fingerprint) {
         $sshConnector = new SSHConnector($ip, "22", $ssh_fingerprint);
         $sshConnector->connect_password($ssh_username, $ssh_password);
 
         $sshConnector->exec("umount /opt/KISCloud/nfs/");
+    }
+
+    public function checkNFSDisk($ip, $ssh_username, $ssh_password, $ssh_fingerprint) {
+        $sshConnector = new SSHConnector($ip, "22", $ssh_fingerprint);
+        $sshConnector->connect_password($ssh_username, $ssh_password);
+
+        $parserCPUUsage = new ParserNFSDisk($this->getCoreObject());
+        $parserCPUUsage->setExec_output($sshConnector->exec("df"));
+        $parserCPUUsage->parseExec_output();
     }
 
 }
