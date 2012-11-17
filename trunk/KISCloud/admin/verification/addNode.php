@@ -260,9 +260,8 @@ if (isset($_SESSION['step_' . $session]) && isset($_SESSION['log_' . $session]))
             //DB
             //connexion à la base
             // insertion
-            $bdd->query("INSERT INTO NOEUD VALUES(default,'" . $node->getIp() . "','" . $node->getSsh_username() . "','" . $node->getSsh_password() . "','" . $node->getSsh_fingerprint() . "','" . $node->getRam_total() . "', '" . $node->getRam_free() . "',  '" . $node->getCpu_speed() . "','" . $node->getCpu_free() . "','" . $node->getCentos_version() . "','" . $node->getVtd_type() . "','" . $node->getCpu_nb() . "',null);");
-            //$node->ram;
-            //$node->nbproc;
+            $bdd->query("INSERT INTO NOEUD VALUES(default,'" . $node->getIp() . "','" . $node->getSsh_username() . "','" . $node->getSsh_password() . "','" . $node->getSsh_fingerprint() . "','" . $node->getRam_total() . "', '" . $node->getRam_free() . "',  '" . $node->getCpu_speed() . "','" . $node->getCpu_free() . "','" . $node->getCentos_version() . "','" . $node->getVtd_type() . "','" . $node->getCpu_nb() . "','UP');");
+
             $_SESSION['log_' . $session] .= "<p class=\"text-success\">Node added in the database.</p>";
 
             $_SESSION['log_' . $session] .= "<p class=\"text-success\">Node Added in the infrastructure</p>";

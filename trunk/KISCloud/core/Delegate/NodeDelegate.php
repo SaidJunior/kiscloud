@@ -32,16 +32,7 @@ class NodeDelegate extends KisCore {
 
         $sshConnector->connect_password($ssh_username, $ssh_password);
 
-        //Test VT-d
-        $parserVTD = new ParserVTD($this->getCoreObject());
-        //$parserVTD->setExec_output($sshConnector->exec("grep -E 'svm|vmx' /proc/cpuinfo"));
-        $parserVTD->setExec_output($sshConnector->exec("cat /proc/cpuinfo"));
-        $parserVTD->parseExec_output();
-
-        //Test CentOS
-        $parserCentOS = new ParserCentOS($this->getCoreObject());
-        $parserCentOS->setExec_output($sshConnector->exec("cat /etc/redhat-release"));
-        $parserCentOS->parseExec_output();
+        $this->getNodeInformations($ip, $ssh_username, $ssh_password, $sshConnector->getSsh_server_fp());
 
         //Test x86_64
         $parserArch64 = new ParserArch64($this->getCoreObject());
@@ -69,6 +60,21 @@ class NodeDelegate extends KisCore {
         $parserRpcbind = new ParserRpcbind($this->getCoreObject());
         $parserRpcbind->setExec_output($sshConnector->exec("rpm -qa"));
         $parserRpcbind->parseExec_output();
+    }
+    
+    public function getNodeInformations($ip, $ssh_username, $ssh_password, $ssh_fingerprint) {
+        $sshConnector = new SSHConnector($ip, "22", $ssh_fingerprint);
+        $sshConnector->connect_password($ssh_username, $ssh_password);
+
+        //Test VT-d
+        $parserVTD = new ParserVTD($this->getCoreObject());
+        $parserVTD->setExec_output($sshConnector->exec("cat /proc/cpuinfo"));
+        $parserVTD->parseExec_output();
+
+        //Test CentOS
+        $parserCentOS = new ParserCentOS($this->getCoreObject());
+        $parserCentOS->setExec_output($sshConnector->exec("cat /etc/redhat-release"));
+        $parserCentOS->parseExec_output();
     }
 
     public function installNodeRequirement($ip, $ssh_username, $ssh_password, $ssh_fingerprint) {
