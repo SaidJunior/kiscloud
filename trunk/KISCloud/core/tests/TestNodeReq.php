@@ -99,6 +99,6 @@ $nodeDelegate->checkCPUUsage($ip, $ssh_username, $ssh_password, $ssh_fingerprint
 echo "CPU libre (en %): " . $node->getCpu_free() . "<br />";
 
 $nodeDelegate->checkCPUInfo($ip, $ssh_username, $ssh_password, $ssh_fingerprint);
-echo "Nomber of virtual cpu's: " . $node->getCpu_total() . "<br />";
+echo "Nomber of virtual cpu's: " . $node->getCpu_nb() . "<br />";
 echo "Cpu speed is: " . $node->getCpu_speed() . " (MHz)" . "<br />";
 ?>

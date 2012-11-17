@@ -12,7 +12,7 @@ class ParserRAMUsage extends SSHParser {
         $data = explode("\n", $this->getExec_output());
         $meminfo = array();
         foreach ($data as $line) {
-            list($key, $val) = explode(":", $line);
+            @list($key, $val) = explode(":", $line);
             $meminfo[$key] = trim($val);
         }
         //return $meminfo;

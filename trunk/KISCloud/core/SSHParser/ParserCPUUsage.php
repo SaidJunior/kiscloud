@@ -15,6 +15,7 @@ class ParserCPUUsage extends SSHParser {
         $cpu_libre = $cpuinfo[0];
         
         $this->getCoreObject()->setCpu_free($cpu_libre);
+        //$this->getCoreObject()->setCpu_total();
     }
 }
 
