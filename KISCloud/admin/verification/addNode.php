@@ -71,9 +71,10 @@ if (isset($_SESSION['step_' . $session]) && isset($_SESSION['log_' . $session]))
                     $_SESSION['log_' . $session] .= "<p class=\"text-error\">64 bit kernel not supported</p>";
                     $error = true;
                 }
-                
+
                 $nodeDelegate->checkRAMUsage($ip, $username, $password, $node->getSsh_fingerprint());
-                
+                $nodeDelegate->checkCPUInfo($ip, $username, $password, $node->getSsh_fingerprint());
+                $nodeDelegate->checkCPUUsage($ip, $username, $password, $node->getSsh_fingerprint());
             } else {
                 $error = true;
                 $_SESSION['log_' . $session] .= "<p class=\"text-error\">Unabled to receive the data's form...</p>";
@@ -259,7 +260,7 @@ if (isset($_SESSION['step_' . $session]) && isset($_SESSION['log_' . $session]))
             //DB
             //connexion à la base
             // insertion
-            $bdd->query("INSERT INTO NOEUD VALUES(default,'" . $node->getIp() . "','" . $node->getSsh_username() . "','" . $node->getSsh_password() . "','" . $node->getSsh_fingerprint() . "','" . $node->getRam_total() . "', '" . $node->getRam_free() . "',  '" . $node->getCpu_total() . "','" . $node->getCpu_free() . "','" . $node->getCentos_version() . "','" . $node->getVtd_type() . "',null,null);");
+            $bdd->query("INSERT INTO NOEUD VALUES(default,'" . $node->getIp() . "','" . $node->getSsh_username() . "','" . $node->getSsh_password() . "','" . $node->getSsh_fingerprint() . "','" . $node->getRam_total() . "', '" . $node->getRam_free() . "',  '" . $node->getCpu_speed() . "','" . $node->getCpu_free() . "','" . $node->getCentos_version() . "','" . $node->getVtd_type() . "','" . $node->getCpu_nb() . "',null);");
             //$node->ram;
             //$node->nbproc;
             $_SESSION['log_' . $session] .= "<p class=\"text-success\">Node added in the database.</p>";
