@@ -14,6 +14,11 @@ $bdd = new PDO('mysql:host=localhost;dbname=KISCLOUD', 'root', 'p@ssw0rd', $pdo_
 
 $PATH = $_SERVER['DOCUMENT_ROOT'] . "/KISCloud/";
 
+if(empty($_SERVER['DOCUMENT_ROOT'])){
+    //PHP CLI
+    $PATH="/var/www/html/KISCloud";
+}
+
 /*
  * Include Core Objects
  */
