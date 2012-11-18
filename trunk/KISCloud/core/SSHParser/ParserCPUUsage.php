@@ -9,12 +9,16 @@ class ParserCPUUsage extends SSHParser {
 
     function parseExec_output() {
         //$data = explode("\n", $this->getExec_output(), -88);
-        $data = explode("\n", $this->getExec_output());
+        $data = explode("\n", $this->getExec_output(), 4);
         $data2 = explode(',', $data[2]);
-        $cpuinfo = explode("%", $data2[3]);
-        $cpu_libre = $cpuinfo[0];
-        
+        //removes the CPU: from the table
+        $data3 = end(explode(':', $data2[0]));
+
+        $cpu_used = floatval($data3);
+        $cpu_libre = floatval($data2[3]);
+
         $this->getCoreObject()->setCpu_free($cpu_libre);
+        $this->getCoreObject()->setCpu_used($cpu_used);
         //$this->getCoreObject()->setCpu_total();
     }
 }

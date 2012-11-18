@@ -97,8 +97,9 @@ echo "Memoire Libre (Mo): " . $node->getRam_free() . "<br />";
 
 $nodeDelegate->checkCPUUsage($ip, $ssh_username, $ssh_password, $ssh_fingerprint);
 echo "CPU libre (en %): " . $node->getCpu_free() . "<br />";
+echo "CPU used (en %): " . $node->getCpu_used() . "<br />";
 
 $nodeDelegate->checkCPUInfo($ip, $ssh_username, $ssh_password, $ssh_fingerprint);
 echo "Nomber of virtual cpu's: " . $node->getCpu_nb() . "<br />";
-echo "Cpu speed is: " . $node->getCpu_speed() . " (MHz)" . "<br />";
+echo "Total Cpu speed is: " . $node->getCpu_speed() . " (GHz)" . "<br />";
 ?>
