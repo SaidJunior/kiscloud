@@ -39,11 +39,12 @@ class Node extends CoreObjects {
     private $cpu_nb = null;
     private $cpu_total = null;
     private $cpu_free = null;
+    private $cpu_used = null;
 
     public function __construct() {
         parent::__construct();
     }
-    
+
     public function getIp() {
         return $this->ip;
     }
@@ -91,7 +92,7 @@ class Node extends CoreObjects {
     public function setCentos_version($centos_version) {
         $this->centos_version = $centos_version;
     }
-    
+
     public function getVtd_enabled() {
         return $this->vtd_enabled;
     }
@@ -107,7 +108,7 @@ class Node extends CoreObjects {
     public function setVtd_type($vtd_type) {
         $this->vtd_type = $vtd_type;
     }
-    
+
     public function getNfs_folder_created() {
         return $this->nfs_folder_created;
     }
@@ -132,12 +133,11 @@ class Node extends CoreObjects {
         $this->arch64bit = $arch64bit;
     }
 
-    
-    public function getQemu_image(){
+    public function getQemu_image() {
         return $this->qemu_image;
     }
-    
-    public function setQemu_image($qemu_image){
+
+    public function setQemu_image($qemu_image) {
         $this->qemu_image = $qemu_image;
     }
 
@@ -149,31 +149,31 @@ class Node extends CoreObjects {
     public function setNfs_folder_mounted($nfs_folder_mounted) {
         $this->nfs_folder_mounted = $nfs_folder_mounted;
     }
-    
-    public function getRpcbind(){
+
+    public function getRpcbind() {
         return $this->rpcbind;
     }
-    
-    public function setRpcbind($rpcbind){
+
+    public function setRpcbind($rpcbind) {
         $this->rpcbind = $rpcbind;
     }
-    
-    public function getNfs_utils(){
+
+    public function getNfs_utils() {
         return $this->nfs_utils;
     }
-    
-    public function setNfs_utils($nfs_utils){
+
+    public function setNfs_utils($nfs_utils) {
         $this->nfs_utils = $nfs_utils;
     }
-    
-    public function setBridge_utils($bridge_utils){
+
+    public function setBridge_utils($bridge_utils) {
         $this->bridge_utils = $bridge_utils;
     }
-    
-    public function getBridge_utils(){
+
+    public function getBridge_utils() {
         return $this->bridge_utils;
     }
-    
+
     public function getRam_total() {
         return $this->ram_total;
     }
@@ -189,7 +189,7 @@ class Node extends CoreObjects {
     public function setRam_free($ram_free) {
         $this->ram_free = $ram_free;
     }
-    
+
     public function getCpu_total() {
         return $this->cpu_total;
     }
@@ -205,7 +205,7 @@ class Node extends CoreObjects {
     public function setCpu_free($cpu_free) {
         $this->cpu_free = $cpu_free;
     }
-   
+
     public function getCpu_nb() {
         return $this->cpu_nb;
     }
@@ -222,8 +222,14 @@ class Node extends CoreObjects {
         $this->cpu_speed = $cpu_speed;
     }
 
+    public function getCpu_used() {
+        return $this->cpu_used;
+    }
 
-    
+    public function setCpu_used($cpu_used) {
+        $this->cpu_used = $cpu_used;
+    }
+
 }
 
 ?>
