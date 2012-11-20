@@ -192,7 +192,7 @@ if ($nbFS['nbNFS'] == "1" && $nbManager['nbManager'] == "1") {
                     <td><?php echo $resultListNode['ram_total']; ?> Mo</td>
                     <td><?php echo $resultListNode['ram_free']; ?> Mo</td>
                     <td><?php echo $resultListNode['nb_proc_noeud']; ?></td>
-                    <td><?php echo $resultListNode['cpu_total']; ?> MHz</td>
+                    <td><?php echo $resultListNode['cpu_total']; ?> GHz</td>
                     <td><?php echo $resultListNode['cpu_free']; ?> %</td>
                     <td><?php echo "CPU used"//$resultListNode['']; ?> %</td>
                     <td><?php echo $resultListNode['vtd_type']; ?></td>

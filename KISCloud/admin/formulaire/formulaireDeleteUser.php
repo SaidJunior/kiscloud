@@ -16,7 +16,13 @@
                     $('#myModalDeleteUser').modal('hide');
                     getAjaxUsers();
                 }else{
-                    alert("echec de suppression de la ligne")			
+                    if(msg==0){
+                        $('#myModalDeleteUser').modal('hide');
+                        $('#consoleUser').html("<div class=\"alert alert-error\">Unable to delete this User<button type=\"button\" class=\"close\" data-dismiss=\"alert\">x</button></div>");
+                    }else if(msg==-1){
+                        $('#myModalDeleteUser').modal('hide');
+                        $('#consoleUser').html("<div class=\"alert alert-error\">Unable to delete Admin User<button type=\"button\" class=\"close\" data-dismiss=\"alert\">x</button></div>");
+                    }			
                 }
             }
         });		
