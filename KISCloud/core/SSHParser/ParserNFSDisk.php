@@ -9,20 +9,24 @@ class ParserNFSDisk extends SSHParser {
 
     function parseExec_output() {
         $pattern = '/\/opt\/KISCloud\/nfs/i';
- 
+        $info = array();
+
         $tmp = explode("\n", $this->getExec_output());
         for ($i = 0; $i <= count($tmp); $i++) {
             //echo "index = " . $i . "<br />" . $tmp[$i] . "<br />";
-            preg_match($pattern, $tmp[$i], $matches);
-            if (count($matches) > 0) {
+            $found = preg_match($pattern, $tmp[$i], $matches = null);
+            if ($found == 1) {
                 //echo "index = " . $i . "<br />" . $tmp[$i] . "<br />";
-                $data = preg_split(" ", $tmp[$i], PREG_SPLIT_NO_EMPTY);
-                $data = explode(" ", trim($tmp[$i]));
-                //var_dump($data);
+                $data = explode(' ', $tmp[$i]);
+                for ($j = 0; $j <= count($data); $j++) {
+                    if ($data[$j] != null && $data[$j] != " ")
+                        $info[] = $data[$j];
+                }
+                //var_dump($info);
             }
         }
-        $this->getCoreObject()->setNfs_disk_size(round(intval($data[0]) / 1048576, 2));
-        $this->getCoreObject()->setNfs_disk_free(round(intval($data[7]) / 1048576, 2));
+        $this->getCoreObject()->setNfs_disk_size(round(intval($info[0]) / 1048576, 2));
+        $this->getCoreObject()->setNfs_disk_free(round(intval($info[2]) / 1048576, 2));
     }
 
 }
