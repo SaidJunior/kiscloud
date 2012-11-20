@@ -58,9 +58,12 @@ if (isset($_POST["ip_NFS"]) && isset($_POST["path_NFS"])) {
     }
 
     if (!$error) {
+        $managerDelegate->checkNFSDisk($ip, $ssh_username, $ssh_password, $ssh_fingerprint);
         //SQL
+        $disk_size = $manager->getNfs_disk_size();
+        $disk_free = $manager->getNfs_disk_free();
         $requetDeleteNFS = $bdd->query("DELETE FROM NFS;");
-        $requetAddNFS = $bdd->query("INSERT INTO NFS VALUES(default,'$ip_nfsServer','$path');");
+        $requetAddNFS = $bdd->query("INSERT INTO NFS VALUES(default,'$ip_nfsServer','$path', '$disk_size', '$disk_free');");
         $JS_LOAD .= "<div class=\"alert alert-success\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\">x</button>NFS is configured correctly.</div>";
         $requetDeleteNFS->closeCursor();
         $requetAddNFS->closeCursor();

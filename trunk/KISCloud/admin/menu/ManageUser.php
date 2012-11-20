@@ -35,6 +35,8 @@ if ($nbFS['nbNFS'] == "1" && $nbManager['nbManager'] == "1") {
     </script>
 
 
+    <div id="consoleUser"></div>
+    
     <!-- bouton d'ajout d'un utilisateur -->
     <a class="btn btn-success" href="#myModalAddUser"  role="button" class="btn" data-remote="formulaire/formulaireAddUser.php" data-toggle="modal">Add User</a>	
 
