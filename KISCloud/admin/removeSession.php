@@ -5,15 +5,16 @@
  * and open the template in the editor.
  */
 session_start();
+if ((isset($_SESSION['login'])) && (!empty($_SESSION['login'])) && isset($_SESSION['status_user']) && ($_SESSION['status_user'] == "admin")) {
 
-if(isset($_POST['removeSession'])){
-    $session = $_POST['removeSession'];
-    if (isset($_SESSION['step_' . $session]) && isset($_SESSION['log_' . $session])) {
-        unset($_SESSION['step_' . $session]);
-        unset($_SESSION['log_' . $session]);
-        unset($_SESSION['delegate_' . $session]);
-        echo "ok";
+    if (isset($_POST['removeSession'])) {
+        $session = $_POST['removeSession'];
+        if (isset($_SESSION['step_' . $session]) && isset($_SESSION['log_' . $session])) {
+            unset($_SESSION['step_' . $session]);
+            unset($_SESSION['log_' . $session]);
+            unset($_SESSION['delegate_' . $session]);
+            echo "ok";
+        }
     }
 }
-
 ?>

@@ -25,22 +25,26 @@ class UserDelegate extends KisCore {
         $parserUserFolder->parseExec_output();
     }
 
-    public function createUserFolder($ip, $ssh_username, $ssh_password, $ssh_fingerprint, $id) {
+    public function createUserFolder($ip, $ssh_username, $ssh_password, $ssh_fingerprint, $id, $root_path) {
         $sshConnector = new SSHConnector($ip, "22", $ssh_fingerprint);
         $sshConnector->connect_password($ssh_username, $ssh_password);
 
         $sshConnector->exec('mkdir -p /opt/KISCloud/nfs/users/' . $id . '/disks');
         $sshConnector->exec('mkdir -p /opt/KISCloud/nfs/users/' . $id . '/isos');
         
-        //Chown apache:virt ???
+        $sshConnector->exec('ln -s /opt/KISCloud/nfs/users/' . $id . ' ' . $root_path . '/client/server/php/files/');
         
+        $sshConnector->exec('chmod u=rwX,g=rwX,o=rwX -R /opt/KISCloud/nfs/users/' . $id . '/*');
+
+        //Chown apache:virt ???
     }
 
-    public function deleteUserFolder($ip, $ssh_username, $ssh_password, $ssh_fingerprint, $id) {
+    public function deleteUserFolder($ip, $ssh_username, $ssh_password, $ssh_fingerprint, $id, $root_path) {
         $sshConnector = new SSHConnector($ip, "22", $ssh_fingerprint);
         $sshConnector->connect_password($ssh_username, $ssh_password);
 
         $sshConnector->exec('rm -rf /opt/KISCloud/nfs/users/' . $id);
+        $sshConnector->exec('rm -rf ' . $root_path . '/client/server/php/files/' . $id);
     }
 
 }

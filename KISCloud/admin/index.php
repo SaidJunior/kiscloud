@@ -1,4 +1,6 @@
-<?php 
+<?php
+session_start();
+if ((isset($_SESSION['login'])) && (!empty($_SESSION['login'])) && isset($_SESSION['status_user']) && ($_SESSION['status_user'] == "admin")) {
 include_once '../include/global.php';
 ?>
 <!DOCTYPE html>
@@ -99,3 +101,8 @@ include_once '../include/global.php';
 
     </body>
 </html>
+<?php
+}else{
+    header('Location: ../index.php'); 
+}
+?>
