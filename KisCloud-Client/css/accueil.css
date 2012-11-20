@@ -1,0 +1,29 @@
+
+.contenerAccueil{
+	background: white;
+	border-radius: 20px;
+	-moz-border-radius: 20px;
+	color: #1A1A1A;
+	padding: 20px;
+	box-shadow: 1px 1px 10px white;
+	-webkit-box-shadow: 0px 0px 30px ;
+	width: 500px;
+	height: 600px;
+	margin: auto;
+	margin-top:100px;
+	
+}
+
+.box { 
+	background:#444; background:rgba(0,0,0,.6);
+	padding:20px;
+	border-radius:5px;
+	margin-bottom:20px;
+}
+
+.main {
+	position:relative;
+	margin:50px 50px 440px 220px;
+	min-width:300px;
+	-webkit-transition-duration:0.6s;-moz-transition-duration:0.6s;-ms-transition-duration:0.6s;-o-transition-duration:0.6s;transition-duration:0.6s;
+}
