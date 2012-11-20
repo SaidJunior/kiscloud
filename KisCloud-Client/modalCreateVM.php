@@ -14,7 +14,12 @@ function insertNewRowVM(msg,name_vm,nb_proc,memory,systeme,iso){
     
     //premiere colonne bouton d'action
     
-
+    // 4eme pour la suppression
+    var cell0 = row.insertCell(0);
+    //var newdiv = document.createElement('div');
+    
+    cell0.innerHTML ="<div class=\"btn-group\"><a class=\"btn dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\"><span class=\"caret\"></span></a> <ul class=\"dropdown-menu\"><li><a tabindex=\"-1\" href=\"#\"><i class=\"icon-play\"></i> Start</a></li><li><a tabindex=\"-1\" href=\"#\"><i class=\"icon-stop\"></i> Stop</a></li><li><a tabindex=\"-1\" href=\"#\"><i class=\"icon-eye-open\"></i> Console</a></li><li><a tabindex=\"-1\" href=\"#\"><i class=\"icon-pencil\"></i> Modify</a></li><li><a tabindex=\"-1\" href=\"#\"><i class=\"icon-remove\"></i> Delete</a></li>     </ul>        </div>";				
+   
     // deuxieme colonne nom de la vm
     var cell1 = row.insertCell(1);
     cell1.innerHTML = name_vm;
@@ -35,29 +40,20 @@ function insertNewRowVM(msg,name_vm,nb_proc,memory,systeme,iso){
     var cell5 = row.insertCell(5);
     var img = document.createElement('img');
     img.src ='img/'+systeme+'-icon.png';
+    img.style.height="40px";
+    img.style.width="40px";
     cell5.appendChild(img);
     
     // colonne status
     var cell6 = row.insertCell(6);
     var img = document.createElement('i');          // image X
     img.className="icon-stop";
+    cell6.appendChild(img);
     
     // colonne bound iso
     var cell7 = row.insertCell(7);
     cell7.innerHTML = iso;
-    /*
-    // 4eme pour la suppression
-    var cell3 = row.insertCell(3);
-    var img = document.createElement('i');          // image X
-    img.className="icon-trash";
-    var buttonnode= document.createElement('a');    // le bouton
-    buttonnode.className="btn pull-left";
-    buttonnode.appendChild(img);                    // l'image va dans le boutton
-    buttonnode.onclick = function() {               // la function
-        confirmVirtualDisk(id);
-    };
-    cell3.appendChild(buttonnode);
-    */
+    
 }    
 //****************************************************************
 //  Fonction de test du formulaire.
@@ -204,7 +200,6 @@ function addVM(){
         //***************************
         //recup des donnes a envoyer
         //***************************
-        
         // type systeme
         if(document.getElementById("linux").className != "btn" ){
             var systeme = "linux";
@@ -231,18 +226,21 @@ function addVM(){
         
         $.ajax({
             type: "POST",               
-            url: "ajax/addNewVM.php",     
+            url: "ajax/addNewVM.php", 
+            async:true,
             data: "systeme="+systeme+"&name_vm="+name_vm+"&nb_proc="+nb_proc+"&memory="+memory+"&vDisk="+vDisk+"&iso="+iso, 
             success: function(msg){
                 if(msg>0){ // tout est ok
                     // on previens que c'est ok'
                     $('#modal_add_vm').modal('hide');
                     // insertion de la ligne de la vm
-                    insertNewRowVM(msg,name_vm,nb_proc,memory,systeme,iso);
                     //affichage message success
                     $("div#message_vm").show();
                     $("div#message_vm").html("<div class=\"alert alert-success\" href=\"#\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button><strong>Success</strong> Virtual machine added.</div>");
                     var t = setTimeout("$(\"div#message_vm\").hide()",3000);
+                    var iso_selected=document.getElementById("select_bound_iso");
+                    var iso_text =  iso_selected.options[iso_selected.selectedIndex].text;
+                    insertNewRowVM(msg,name_vm,nb_proc,memory,systeme,iso_text);
                 }else{
                     // erreur serveur
                     // on previens que c'est ok'
@@ -284,7 +282,7 @@ function addVM(){
       <div class="control-group">
             <label class="control-label" for="name_vm">Name</label>
             <div class="controls">
-              Description: <input type="text" id="name_vm" placeholder="name" rel="tooltip" data-placement="right" data-original-title="No name selected">
+              <input type="text" id="name_vm" placeholder="name" rel="tooltip" data-placement="right" data-original-title="No name selected">
             </div>
       </div>
       

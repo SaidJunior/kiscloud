@@ -83,7 +83,6 @@ function showConsole(id_vm){
                                 <li><a tabindex="-1" href="#"><i class="icon-play"></i> Start</a></li>
                                 <li><a tabindex="-1" href="#"><i class="icon-stop"></i> Stop</a></li>
                                 <li><a tabindex="-1" href="javascript:showConsole(<?php echo $virtual_disk['id_vm'];?>)"><i class="icon-eye-open"></i> Console</a></li>
-                                <li><a tabindex="-1" href="#"><i class="icon-pencil"></i> Modify</a></li>
                                 <li><a tabindex="-1" href="#"><i class="icon-remove"></i> Delete</a></li>
                           </ul>
                         </div>
