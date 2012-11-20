@@ -11,12 +11,12 @@ $bdd = new PDO('mysql:host=localhost;dbname=KISCLOUD', 'root', 'p@ssw0rd', $pdo_
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
+$PATH_FILE = "/var/www/html/KISCloud";
 $PATH = $_SERVER['DOCUMENT_ROOT'] . "/KISCloud/";
 
 if(empty($_SERVER['DOCUMENT_ROOT'])){
     //PHP CLI
-    $PATH="/var/www/html/KISCloud";
+    $PATH=$PATH_FILE;
 }
 
 /*
