@@ -18,7 +18,7 @@ function insertNewRowVM(msg,name_vm,nb_proc,memory,systeme,iso){
     var cell0 = row.insertCell(0);
     //var newdiv = document.createElement('div');
     
-    cell0.innerHTML ="<div class=\"btn-group\"><a class=\"btn dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\"><span class=\"caret\"></span></a> <ul class=\"dropdown-menu\"><li><a tabindex=\"-1\" href=\"#\"><i class=\"icon-play\"></i> Start</a></li><li><a tabindex=\"-1\" href=\"#\"><i class=\"icon-stop\"></i> Stop</a></li><li><a tabindex=\"-1\" href=\"#\"><i class=\"icon-eye-open\"></i> Console</a></li><li><a tabindex=\"-1\" href=\"#\"><i class=\"icon-pencil\"></i> Modify</a></li><li><a tabindex=\"-1\" href=\"#\"><i class=\"icon-remove\"></i> Delete</a></li>     </ul>        </div>";				
+    cell0.innerHTML ="<div class=\"btn-group\"><a class=\"btn dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\"><span class=\"caret\"></span></a> <ul class=\"dropdown-menu\"><li><a tabindex=\"-1\" href=\"#\"><i class=\"icon-play\"></i> Start</a></li><li><a tabindex=\"-1\" href=\"#\"><i class=\"icon-stop\"></i> Stop</a></li><li><a tabindex=\"-1\" href=\"javascript:showConsole("+msg+")\"><i class=\"icon-eye-open\"></i> Console</a></li><li><a tabindex=\"-1\" href=\"#\"><i class=\"icon-pencil\"></i> Modify</a></li><li><a tabindex=\"-1\" href=\"#\"><i class=\"icon-remove\"></i> Delete</a></li>     </ul>        </div>";				
    
     // deuxieme colonne nom de la vm
     var cell1 = row.insertCell(1);
