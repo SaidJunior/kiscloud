@@ -1,4 +1,6 @@
 <script type="text/javascript">
+// variable globales
+var idVMtoDelete;
 /**
  * Affiche la console pour la vm selectionnée
  */
@@ -17,6 +19,32 @@ function showConsole(id_vm){
                 // la vm n'est pas lancée'
                 $("div#message_vm").show();
                 $("div#message_vm").html("<div class=\"alert alert-block\" href=\"#\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button><strong>Warning</strong> VM not launched.</div>");
+                var t = setTimeout("$(\"div#message_vm\").hide()",3000);
+            }
+        }
+    });
+    
+}
+/**
+* Supprime la vm de la base si elle est arreté
+ */
+function confirmeDeleteVM(id){
+    //test pour savoir si la vm est lancé ou non
+    $.ajax({ 
+        type: "POST",
+        async:false,
+        url: "ajax/checkVMisAlive.php", 
+        data: "id="+idVMtoDelete,        
+        success: function(msg){ 
+            if(msg==1){
+                //  la vm est bien stopé on peut demander la confirmation
+                $('#modalRemoveVM').modal('show');
+                // on stoke l'id au cas ou la suppresion est validé
+                idVMtoDelete=id;
+            }else{
+                // la vm n'est pas lancée'
+                $("div#message_vm").show();
+                $("div#message_vm").html("<div class=\"alert alert-block\" href=\"#\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button><strong>Warning</strong> Stop VM first.</div>");
                 var t = setTimeout("$(\"div#message_vm\").hide()",3000);
             }
         }
@@ -80,10 +108,10 @@ function showConsole(id_vm){
                         <div class="btn-group">
                           <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
                           <ul class="dropdown-menu">
-                                <li><a tabindex="-1" href="#"><i class="icon-play"></i> Start</a></li>
-                                <li><a tabindex="-1" href="#"><i class="icon-stop"></i> Stop</a></li>
-                                <li><a tabindex="-1" href="javascript:showConsole(<?php echo $virtual_disk['id_vm'];?>)"><i class="icon-eye-open"></i> Console</a></li>
-                                <li><a tabindex="-1" href="#"><i class="icon-remove"></i> Delete</a></li>
+                            <li><a tabindex="-1" href="#"><i class="icon-play"></i> Start</a></li>
+                            <li><a tabindex="-1" href="#"><i class="icon-stop"></i> Stop</a></li>
+                            <li><a tabindex="-1" href="javascript:showConsole(<?php echo $virtual_disk['id_vm'];?>)"><i class="icon-eye-open"></i> Console</a></li>
+                            <li><a tabindex="-1" href="javascript:confirmeDeleteVM(<?php echo $virtual_disk['id_vm'];?>)"><i class="icon-remove"></i> Delete</a></li>
                           </ul>
                         </div>
                     </td>
@@ -109,9 +137,10 @@ function showConsole(id_vm){
     </table>
 </div>   
 
-<!-- Modale de creation d'une vm -->
+<!-- Modale de creation d'une vm et suppresion -->
 <?php
    include 'modalCreateVM.php';
+   include 'modalRemoveVM.php';
 ?>
         
 
