@@ -12,7 +12,15 @@ include_once '../include/global.php';
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <script src="../js/jquery-1.8.2.min.js"></script>
         <link href="../css/head.css" rel="stylesheet">
-        <script src="../js/bootstrap.js"></script>	
+        <script src="../js/bootstrap.js"></script>
+        
+       <style type="text/css" title="currentStyle">
+            @import "../css/datatables/demo_page.css";
+            @import "../css/datatables/demo_table.css";
+	</style>
+        <script type="text/javascript" language="javascript" src="../js/datatables/jquery.js"></script>
+        <script type="text/javascript" language="javascript" src="../js/datatables/jquery.dataTables.js"></script>
+        
         <link href="../css/kiscloud.css" rel="stylesheet">
     </head>
     <body>
