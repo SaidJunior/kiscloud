@@ -153,7 +153,7 @@ if ((isset($_SESSION['login'])) && (!empty($_SESSION['login'])) && isset($_SESSI
             </div>
             <div class="modal-footer">
                 <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                <button onclick="deleteNode()" class="btn btn-danger">Delete Node</button>
+                <button onclick="deleteNode()" class="btn btn-primary">Delete Node</button>
             </div>
         </div>
 
@@ -198,7 +198,7 @@ if ((isset($_SESSION['login'])) && (!empty($_SESSION['login'])) && isset($_SESSI
                         <td><?php echo $resultListNode['vtd_type']; ?></td>
                         <td><?php echo $resultListNode['centOS_version']; ?></td>
                         <td><?php echo $resultListNode['status_node']; ?></td>
-                        <td><a class="btn btn-primary" href="#modalDeleteNode" onclick="confirmDeleteNode(<?php echo $resultListNode['id_noeud']; ?>,<?php echo $numRow; ?>)" role="button" class="btn">Delete</a></td>
+                        <td><a class="btn btn-danger" href="#modalDeleteNode" onclick="confirmDeleteNode(<?php echo $resultListNode['id_noeud']; ?>,<?php echo $numRow; ?>)" role="button" class="btn">Delete</a></td>
                     </tr>	
 
                     <?php
