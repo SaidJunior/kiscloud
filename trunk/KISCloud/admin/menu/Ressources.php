@@ -54,19 +54,18 @@ if ((isset($_SESSION['login'])) && (!empty($_SESSION['login'])) && isset($_SESSI
     <legend></legend>
     <legend><h4><p class="text-info">Global Resources</p></h4></legend>
 
-    <table class="table table-hover" > 
+    <table class="table table-hover table-bordered table_ressources" > 
 
         <thead>  <!-- début table de tête -->
             <tr>
                 <th>Storage</th>
-                <th></th>
                 <th>CPU</th>
                 <th>RAM</th>						 
             </tr>
         </thead> <!-- fin table de tête -->
         <tbody>  
             <tr>
-                <td><h4><?php echo $storageTotal; ?> Go</h4><td>
+                <td><h4><?php echo $storageTotal; ?> Go</h4></td>
                 <td><h4><?php echo $cpuTotal; ?> GHz</h4></td>
                 <td><h4><?php echo $ramTotal; ?> Mo</h4></td>     
             </tr>
@@ -76,9 +75,9 @@ if ((isset($_SESSION['login'])) && (!empty($_SESSION['login'])) && isset($_SESSI
 
     <!--  *** RESSOURCES LIBRES *** -->
     <legend></legend>
-    <legend><h4><p class="text-info">Current Resources</p></h4></legend>
+    <legend><h4><p class="text-info">Current Resources (With Operating System Usages)</p></h4></legend>
 
-    <table class="table table-hover" > 
+    <table class="table table-hover table-bordered table_ressources" > 
 
         <thead>  <!-- début table de tête -->
             <tr>
@@ -111,15 +110,15 @@ if ((isset($_SESSION['login'])) && (!empty($_SESSION['login'])) && isset($_SESSI
                 <?php
                 if (($cpuFree > $cpuTotal / 10) && ($cpuFree <= $cpuTotal /3.33)){
                     ?>
-                        <h4><p class="text-warning"><?php echo $cpuFree; ?> GHz</p></h4>
+                        <h4><p class="text-warning"><?php //echo $cpuFree; ?></p></h4>
                         <?php
                     } else if ($cpuFree <= $cpuTotal / 10) {
                         ?>
-                        <h4><p class="text-error"><?php echo $cpuFree; ?> GHz</p></h4>
+                        <h4><p class="text-error"><?php //echo $cpuFree; ?></p></h4>
                         <?php
                     } else {
                         ?>
-                        <h4><p class="text-success"><?php echo $cpuFree; ?> GHz</p></h4>
+                        <h4><p class="text-success"><?php //echo $cpuFree; ?></p></h4>
                         <?php
                     }
                     ?> 
@@ -151,9 +150,9 @@ if ((isset($_SESSION['login'])) && (!empty($_SESSION['login'])) && isset($_SESSI
 
 
     <legend></legend>
-    <legend><h4><p class="text-info">Real Resources</p></h4></legend>
+    <legend><h4><p class="text-info">VMs Resources (If all VMs are running with full disk)</p></h4></legend>
 
-    <table class="table table-hover" > 
+    <table class="table table-hover table-bordered table_ressources" > 
 
         <thead>  <!-- début table de tête -->
             <tr>
@@ -202,8 +201,6 @@ if ((isset($_SESSION['login'])) && (!empty($_SESSION['login'])) && isset($_SESSI
                 <!--  *** RAM *** -->
                 <td>
                 <?php
-                
-                $ramReel = 88;
                 if (($ramReel > $ramTotal / 10) && ($ramReel <= $ramTotal /3.33)){
                     ?>
                         <h4><p class="text-warning"><?php echo $ramReel; ?> Mo</p></h4>

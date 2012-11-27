@@ -4,6 +4,22 @@ var idVMtoDelete;
 /**
  * Affiche la console pour la vm selectionnée
  */
+function startVM(id_vm){
+    $.ajax({ 
+        type: "POST",
+        url: "ajax/startVM.php", 
+        data: "id="+idVMtoDelete,        
+        success: function(msg){ 
+            if(msg==1){
+                // la vm est pas lancée'
+                $("div#message_vm").show();
+                $("div#message_vm").html("<div class=\"alert alert-block\" href=\"#\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button><strong>Warning</strong> Stop VM first.</div>");
+                var t = setTimeout("$(\"div#message_vm\").hide()",3000);
+            }
+        }
+    });
+}
+
 function showConsole(id_vm){
     // on interoge le serveur pour savoir si la vm est lancée ou non
     $.ajax({ 
