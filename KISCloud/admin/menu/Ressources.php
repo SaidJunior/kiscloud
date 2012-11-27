@@ -10,7 +10,7 @@ if ((isset($_SESSION['login'])) && (!empty($_SESSION['login'])) && isset($_SESSI
     $storageFree = $resultSelectStorageNFS['disk_free_nfs'];
     $storageUsed = $resultSelectStorageNFS['disk_used_nfs'];
     $storageTotal = $storageFree + $storageUsed;
-    
+
 
 
     // ********* CPU *********
@@ -42,12 +42,11 @@ if ((isset($_SESSION['login'])) && (!empty($_SESSION['login'])) && isset($_SESSI
     $requetSelectRealRam = $bdd->query("SELECT SUM(ram_vm) AS realRam FROM VM; "); // requete pour recup de la ram libre
     $resultSelectRealRam = $requetSelectRealRam->fetch();
     $SumRamVM = $resultSelectRealRam['realRam'];
-    
-    
-   
-   $storageReel = ($storageTotal - $SumDiskVM);
-   $ramReel = ($ramTotal - $SumRamVM);
-    
+
+
+
+    $storageReel = ($storageTotal - $SumDiskVM);
+    $ramReel = ($ramTotal - $SumRamVM);
     ?>
     <!--  *** RESSOURCES GLOBALES *** -->
 
@@ -89,9 +88,9 @@ if ((isset($_SESSION['login'])) && (!empty($_SESSION['login'])) && isset($_SESSI
         <tbody>       
             <tr>  
                 <td>
-                <?php
-                if (($storageFree > $storageTotal / 10) && ($storageFree <= $storageTotal / 3.33)) {
-                    ?>
+                    <?php
+                    if (($storageFree > $storageTotal / 10) && ($storageFree <= $storageTotal / 3.33)) {
+                        ?>
                         <h4><p class="text-warning"><?php echo $storageFree; ?> Go</p></h4>
                         <?php
                     } else if ($storageFree <= $storageTotal / 10) {
@@ -105,11 +104,11 @@ if ((isset($_SESSION['login'])) && (!empty($_SESSION['login'])) && isset($_SESSI
                     }
                     ?>
                 </td>
-                                     <!--  *** CPU *** -->
+                <!--  *** CPU *** -->
                 <td>                
-                <?php
-                if (($cpuFree > $cpuTotal / 10) && ($cpuFree <= $cpuTotal /3.33)){
-                    ?>
+                    <?php
+                    if (($cpuFree > $cpuTotal / 10) && ($cpuFree <= $cpuTotal / 3.33)) {
+                        ?>
                         <h4><p class="text-warning"><?php //echo $cpuFree; ?></p></h4>
                         <?php
                     } else if ($cpuFree <= $cpuTotal / 10) {
@@ -125,9 +124,9 @@ if ((isset($_SESSION['login'])) && (!empty($_SESSION['login'])) && isset($_SESSI
                 </td>
                 <!--  *** RAM *** -->
                 <td>
-                <?php
-                if (($ramFree <= $ramTotal / 10) && ($ramFree > $ramTotal /3.33)){
-                    ?>
+                    <?php
+                    if (($ramFree <= $ramTotal / 10) && ($ramFree > $ramTotal / 3.33)) {
+                        ?>
                         <h4><p class="text-warning"><?php echo $ramFree; ?> Mo</p></h4>
                         <?php
                     } else if ($ramFree <= $cpuTotal / 3.33) {
@@ -164,9 +163,9 @@ if ((isset($_SESSION['login'])) && (!empty($_SESSION['login'])) && isset($_SESSI
         <tbody>       
             <tr>  
                 <td>
-                <?php
-                if (($storageReel > $storageTotal / 10) && ($storageReel <= $storageTotal / 3.33)) {
-                    ?>
+                    <?php
+                    if (($storageReel > $storageTotal / 10) && ($storageReel <= $storageTotal / 3.33)) {
+                        ?>
                         <h4><p class="text-warning"><?php echo $storageReel; ?> Go</p></h4>
                         <?php
                     } else if ($storageReel <= $storageTotal / 10) {
@@ -182,14 +181,14 @@ if ((isset($_SESSION['login'])) && (!empty($_SESSION['login'])) && isset($_SESSI
                 </td>
 
                 <td>                 <!--  *** CPU *** -->
-                <?php
-                if ($cpuFree <= $cpuTotal / 10) {
-                    ?>
-        <!--                                 <h4><p class="text-error"><?php echo ''; ?> </p></h4>-->
+                    <?php
+                    if ($cpuFree <= $cpuTotal / 10) {
+                        ?>
+                        <h4><p class="text-error"><?php echo ''; ?> </p></h4>
                         <?php
                     } else if ($cpuFree <= $cpuTotal / 3.33) {
                         ?>
-        <!--                                 <h4><p class="text-warning"><?php echo ''; ?> </p></h4>-->
+                        <h4><p class="text-warning"><?php echo ''; ?> </p></h4>
                         <?php
                     } else {
                         ?>
@@ -200,9 +199,9 @@ if ((isset($_SESSION['login'])) && (!empty($_SESSION['login'])) && isset($_SESSI
                 </td>
                 <!--  *** RAM *** -->
                 <td>
-                <?php
-                if (($ramReel > $ramTotal / 10) && ($ramReel <= $ramTotal /3.33)){
-                    ?>
+                    <?php
+                    if (($ramReel > $ramTotal / 10) && ($ramReel <= $ramTotal / 3.33)) {
+                        ?>
                         <h4><p class="text-warning"><?php echo $ramReel; ?> Mo</p></h4>
                         <?php
                     } else if ($ramReel <= $ramTotal / 10) {

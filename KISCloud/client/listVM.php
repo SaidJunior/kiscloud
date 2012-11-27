@@ -1,6 +1,7 @@
 <script type="text/javascript">
 // variable globales
-var idVMtoDelete;
+var idVMtoDelete;//id bdd a supprimer
+
 /**
  * Affiche la console pour la vm selectionnée
  */
@@ -50,13 +51,14 @@ function confirmeDeleteVM(id){
         type: "POST",
         async:false,
         url: "ajax/checkVMisAlive.php", 
-        data: "id="+idVMtoDelete,        
+        data: "id="+id,        
         success: function(msg){ 
             if(msg==1){
+                // on stoke l'id en variable globale au cas ou la suppresion est validé
+                idVMtoDelete=id;
+                
                 //  la vm est bien stopé on peut demander la confirmation
                 $('#modalRemoveVM').modal('show');
-                // on stoke l'id au cas ou la suppresion est validé
-                idVMtoDelete=id;
             }else{
                 // la vm n'est pas lancée'
                 $("div#message_vm").show();
@@ -104,6 +106,7 @@ function confirmeDeleteVM(id){
         </thead>
         <tbody>
             <?php
+            
             while ($virtual_disk = $requet1->fetch()){  // pour chaque ligne de la reponse
                 // si l'id_iso est null on affiche un tiret
                 if($virtual_disk['id_iso']==""){
@@ -117,7 +120,7 @@ function confirmeDeleteVM(id){
                 }
             ?>    
 
-                <tr>
+                <tr id="idRowVM<?php echo $virtual_disk['id_vm'];?>">
                     <!-- colonne boutton d'action -->
                     <td>
                         <div class="btn-group">
@@ -146,6 +149,7 @@ function confirmeDeleteVM(id){
                     <td><?php echo $name_iso;?></td>
                 </tr>
            <?php
+           
            } 
            ?>
         </tbody>
