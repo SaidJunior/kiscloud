@@ -275,7 +275,7 @@ $requet2 = $bdd->query("SELECT nom_disk, taille_virtual_disk,id_virtual_disk
                         <td><?php echo $virtual_disk['taille_virtual_disk'];?> Go</td>
                         <td><?php echo $virtual_disk['nom_disk'];?></td>
                         <td>-</td>
-                        <td><a class="btn pull-left" href="javascript:confirmVirtualDisk(<?php echo $virtual_disk['id_virtual_disk'];?>,<?php echo $numRow ;?>)"><i class="icon-trash"></i></a></td>
+                        <td><a class="btn pull-left" href="javascript:confirmVirtualDisk(<?php echo $virtual_disk['id_virtual_disk'];?>)"><i class="icon-trash"></i></a></td>
                     </tr>
                   
           <?php
