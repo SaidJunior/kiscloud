@@ -68,7 +68,7 @@ if ((isset($_SESSION['login'])) && (!empty($_SESSION['login'])) && isset($_SESSI
             </div>
             <div class="modal-footer">
                 <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                <button onclick="deleteUser()" class="btn btn-primary">Delete User</button>
+                <button onclick="deleteUser()" class="btn btn-danger">Delete User</button>
             </div>
         </div>
 
