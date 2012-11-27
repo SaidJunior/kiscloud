@@ -32,7 +32,7 @@ if ((isset($_SESSION['login'])) && (!empty($_SESSION['login'])) && isset($_SESSI
          
         $requetListVM = $bdd->query("Select * From VM INNER JOIN ISO ON VM.id_iso = ISO.id_iso 
                  INNER JOIN NOEUD ON VM.id_noeud = NOEUD.id_noeud
-                 INNER JOIN USERS ON VM.id_user = USERS.id_user; "); // requette pour recup la liste des utilisateurs
+                 INNER JOIN USERS ON VM.id_user = USERS.id_user; "); 
  
          while ($resultListVM = $requetListVM->fetch()) {// pour chaque ligne de la reponse
             ?> 
