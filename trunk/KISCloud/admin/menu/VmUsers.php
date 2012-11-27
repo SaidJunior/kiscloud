@@ -17,7 +17,7 @@ if ((isset($_SESSION['login'])) && (!empty($_SESSION['login'])) && isset($_SESSI
 <table cellpadding="0" cellspacing="0" border="0" class="display" id="listVM" width="90%">
 	<thead>
 		<tr>
-                    <th class="alignLeft">Name's User</th>
+                    <th>Name's User</th>
                     <th>FirstName's User</th>
                     <th>VM's name</th>
                     <th>OS</th>
@@ -38,14 +38,14 @@ if ((isset($_SESSION['login'])) && (!empty($_SESSION['login'])) && isset($_SESSI
             ?> 
   
             <tr>
-                <td><?php echo $resultListVM['nom_user']; ?></td>
-                <td><?php echo $resultListVM['prenom_user']; ?></td>
-                <td><?php echo $resultListVM['nom_vm']; ?></td>
-                <td><?php echo $resultListVM['systeme']; ?></td>
-                <td><?php echo $resultListVM['ram_vm']; ?></td>
-                <td><?php echo $resultListVM['prenom_user']; ?></td>
-                <td><?php echo $resultListVM['ip_noeud']; ?></td>
-                <td><?php echo $resultListVM['cpu_total']; ?></td>
+                <td class="center"><?php echo $resultListVM['nom_user']; ?></td>
+                <td class="center"><?php echo $resultListVM['prenom_user']; ?></td>
+                <td class="center"><?php echo $resultListVM['nom_vm']; ?></td>
+                <td class="center"><?php echo $resultListVM['systeme']; ?></td>
+                <td class="center"><?php echo $resultListVM['ram_vm']; ?></td>
+                <td class="center"><?php echo $resultListVM['prenom_user']; ?></td>
+                <td class="center"><?php echo $resultListVM['ip_noeud']; ?></td>
+                <td class="center"><?php echo $resultListVM['cpu_total']; ?></td>
             </tr>	
 
             <?php
