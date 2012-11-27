@@ -3,6 +3,8 @@
 //  Ajoute une ligne au tableau des VM
 //****************************************************************  
 function insertNewRowVM(msg,name_vm,nb_proc,memory,systeme,iso){
+    // on cast en int le msg pour eviter d'avoir des caracteres en + genre retour chariot
+    msg= parseInt(msg);
     //recuperation de la table
     var table = document.getElementById("TableVM");
 
@@ -11,14 +13,11 @@ function insertNewRowVM(msg,name_vm,nb_proc,memory,systeme,iso){
 
     //insertion d'une ligne vide
     var row = table.insertRow(rowCount);
+    row.id="idRowVM"+msg;// set d'un id pour la suppression dynamique
     
     //premiere colonne bouton d'action
-    
-    // 4eme pour la suppression
     var cell0 = row.insertCell(0);
-    //var newdiv = document.createElement('div');
-    
-    cell0.innerHTML ="<div class=\"btn-group\"><a class=\"btn dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\"><span class=\"caret\"></span></a> <ul class=\"dropdown-menu\"><li><a tabindex=\"-1\" href=\"#\"><i class=\"icon-play\"></i> Start</a></li><li><a tabindex=\"-1\" href=\"#\"><i class=\"icon-stop\"></i> Stop</a></li><li><a tabindex=\"-1\" href=\"javascript:showConsole("+msg+")\"><i class=\"icon-eye-open\"></i> Console</a></li><li><a tabindex=\"-1\" href=\"#\"><i class=\"icon-pencil\"></i> Modify</a></li><li><a tabindex=\"-1\" href=\"#\"><i class=\"icon-remove\"></i> Delete</a></li>     </ul>        </div>";				
+    cell0.innerHTML ="<div class=\"btn-group\"><a class=\"btn dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\"><span class=\"caret\"></span></a> <ul class=\"dropdown-menu\"><li><a tabindex=\"-1\" href=\"#\"><i class=\"icon-play\"></i> Start</a></li><li><a tabindex=\"-1\" href=\"#\"><i class=\"icon-stop\"></i> Stop</a></li><li><a tabindex=\"-1\" href=\"javascript:showConsole("+msg+")\"><i class=\"icon-eye-open\"></i> Console</a></li><li><a tabindex=\"-1\" href=\"javascript:confirmeDeleteVM("+msg+")\"><i class=\"icon-remove\"></i> Delete</a></li></ul></div>";				
    
     // deuxieme colonne nom de la vm
     var cell1 = row.insertCell(1);
@@ -53,6 +52,15 @@ function insertNewRowVM(msg,name_vm,nb_proc,memory,systeme,iso){
     // colonne bound iso
     var cell7 = row.insertCell(7);
     cell7.innerHTML = iso;
+    //*******************************************************************************************
+    // il faut également modifier le menu list disk pour ne plus pouvoir supprimer le disk
+    //*******************************************************************************************
+    //recup de la ligne
+    var rowDisk= document.getElementById("rowDisk"+idDiskToDelete);
+    //recup de la cellule ou il faut virer l'image de corbeille
+    var cellTomodif= rowDisk.cells[3];
+    //on vire la possibilité de supprimer le disk
+    cellTomodif.innerHTML("-");
     
 }    
 //****************************************************************
@@ -216,7 +224,9 @@ function addVM(){
         var memory = document.getElementById("memory").value;
         
         // virtual disk
-        var vDisk= document.getElementById("select_dipo_disk").value;
+        var vDiskEl=document.getElementById("select_dipo_disk");
+        var vDisk= vDiskEl.value;                                   
+        idDiskToDelete=vDisk;   // stokage pour modifier l'icone dans la list des disques
         // iso bounded
         var iso =  document.getElementById("select_bound_iso").value; 
             
@@ -233,11 +243,11 @@ function addVM(){
                 if(msg>0){ // tout est ok
                     // on previens que c'est ok'
                     $('#modal_add_vm').modal('hide');
-                    // insertion de la ligne de la vm
                     //affichage message success
                     $("div#message_vm").show();
                     $("div#message_vm").html("<div class=\"alert alert-success\" href=\"#\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button><strong>Success</strong> Virtual machine added.</div>");
                     var t = setTimeout("$(\"div#message_vm\").hide()",3000);
+                    // insertion de la ligne de la vm
                     var iso_selected=document.getElementById("select_bound_iso");
                     var iso_text =  iso_selected.options[iso_selected.selectedIndex].text;
                     insertNewRowVM(msg,name_vm,nb_proc,memory,systeme,iso_text);

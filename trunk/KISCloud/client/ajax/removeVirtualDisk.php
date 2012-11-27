@@ -7,10 +7,8 @@ $id_disk = $_POST['id'];
 $requestDisk = $bdd->query('SELECT * FROM VIRTUAL_DISK WHERE id_virtual_disk=' . $id_disk . ';');
 $resultDisk = $requestDisk->fetch();
 $disk_name = $resultDisk['nom_disk'];
-$disk_size = $resultDisk['taille_virtual_disk'];
 $disk_path = $resultDisk['path_nas_virtual_disk'];
 
-//TODO ici appeler le script de clem pour creer le dossier user et le disque
 $requestManager = $bdd->query("SELECT * FROM MANAGER;"); // requete pour recup le nombre de manager
 $resultManager = $requestManager->fetch();
 $ssh_username = $resultManager['ssh_login_manager'];

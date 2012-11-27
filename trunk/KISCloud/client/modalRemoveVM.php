@@ -1,16 +1,28 @@
 <script type="text/javascript">
-function removeVM(){    
+function removeVM(){
+    var deleteDisk = 0;
+    // recup de la checkbox
+    if(document.getElementById('confirmCheckbox').checked){
+        deleteDisk = 1;
+    }
     $.ajax({ 
             type: "POST", 
             url: "ajax/removeVM.php", 
-            data: "id="+idVMtoDelete,
+            data: "id="+idVMtoDelete+"&deleteDisk="+deleteDisk,
             success: function(msg){ 
                 if(msg>0){
-                   // si c'est supérieur a 0 on a reçu le port pour le proxy'
-
-
+                    // on vire le modal
+                    $('#modalRemoveVM').modal('hide');
+                    // on efface la ligne de la vm
+                    var row = document.getElementById("idRowVM"+idVMtoDelete);
+                    row.parentNode.removeChild(row);
+                    //affiche popup success
+                    $("div#message_vm").show();
+                    $("div#message_vm").html("<div class=\"alert alert-success\" href=\"#\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button><strong>Success</strong> Virtual machine deleted.</div>");
+                    var t = setTimeout("$(\"div#message_vm\").hide()",3000);
                 }else{
-                    // la vm n'est pas lancée'
+                    // erreur
+                    $('#modalRemoveVM').modal('hide');
                     $("div#message_vm").show();
                     $("div#message_vm").html("<div class=\"alert alert-block\" href=\"#\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button><strong>Warning</strong> Server error.</div>");
                     var t = setTimeout("$(\"div#message_vm\").hide()",3000);
