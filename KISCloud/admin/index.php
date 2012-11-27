@@ -65,15 +65,7 @@ include_once '../include/global.php';
                     }
                 });
             }
-            function getAjaxLogs(){ 
-                $.ajax({ 
-                    type: "GET", 
-                    url: "menu/Logs.php", 
-                    success: function(msg){
-                        $('#logs').html(msg);
-                    }
-                });
-            }
+
         </script>
         <div class="tabbable tabs-left">			
             <ul class="nav nav-tabs">	
@@ -82,7 +74,6 @@ include_once '../include/global.php';
                 <li><a href="#users" data-target="#users" onclick="getAjaxUsers()" data-toggle="tab"><h4>Manage User</h4></a></li>
                 <li><a href="#ressources" data-target="#ressources" onclick="getAjaxRessources()" data-toggle="tab"><h4>Ressources</h4></a></li>
                 <li><a href="#vm" data-target="#vm" onclick="getAjaxVM()" data-toggle="tab"><h4>VM's Users</h4></a></li>
-                <li><a href="#logs" data-target="#logs" onclick="getAjaxLogs()" data-toggle="tab"><h4>Logs</h4></a></li>
             </ul>
 
             <div class="tab-content">
@@ -93,9 +84,7 @@ include_once '../include/global.php';
                 <div id="node" class="tab-pane" ></div>
                 <div id="users" class="tab-pane" ></div>
                 <div id="ressources" class="tab-pane" ></div>
-                <div id="vm" class="tab-pane" ></div>
-                <div id="logs" class="tab-pane"></div>
-                
+                <div id="vm" class="tab-pane" ></div>  
             </div> <!--/tabcontent --> 
         </div><!--/tabbable tabs-left --> 
 
