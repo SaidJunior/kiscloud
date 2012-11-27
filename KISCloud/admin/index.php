@@ -13,6 +13,7 @@ include_once '../include/global.php';
         <script src="../js/jquery-1.8.2.min.js"></script>
         <link href="../css/head.css" rel="stylesheet">
         <script src="../js/bootstrap.js"></script>	
+        <link href="../css/kiscloud.css" rel="stylesheet">
     </head>
     <body>
         <?php include("menu/navbar.php"); ?>

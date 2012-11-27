@@ -11,11 +11,16 @@ if ((isset($_SESSION['login'])) && (!empty($_SESSION['login'])) && isset($_SESSI
         //$ip_nfsServer = "192.168.56.10";
         //$path = "/opt/KISStorage/";
 //SQL
+//        $ip = "127.0.0.1";
+//        $ssh_username = "root";
+//        $ssh_password = "azerty";
+//        $ssh_fingerprint = "27C2CA58D4B66FF39C0E38BF4D5CD7B9";
+        $requestManager = $bdd->query("SELECT * FROM MANAGER;"); // requete pour recup le nombre de manager
+        $resultManager = $requestManager->fetch();
+        $ssh_username = $resultManager['ssh_login_manager'];
+        $ssh_password = $resultManager['ssh_password'];
+        $ssh_fingerprint = $resultManager['ssh_finger_print'];
         $ip = "127.0.0.1";
-        $ssh_username = "root";
-        $ssh_password = "azerty";
-        $ssh_fingerprint = "27C2CA58D4B66FF39C0E38BF4D5CD7B9";
-
 
         $error = false;
         $JS_LOAD = "<script type=\"text/javascript\">$('#consoleConfManager').html('";

@@ -41,8 +41,8 @@ class UploadHandler
         $this->id_user=$_SESSION['id_user'];
         $this->options = array(
             'script_url' => $this->get_full_url().'/',
-            'upload_dir' => dirname($_SERVER['SCRIPT_FILENAME']).'/files/'.$this->id_user.'/',
-            'upload_url' => $this->get_full_url().'/files/'.$this->id_user.'/',
+            'upload_dir' => dirname($_SERVER['SCRIPT_FILENAME']).'/files/'.$this->id_user.'/isos/',
+            'upload_url' => $this->get_full_url().'/files/'.$this->id_user.'/isos/',
             'param_name' => 'files',
             // Set the following option to 'POST', if your server does not support
             // DELETE requests. This is a parameter sent to the client:

@@ -15,6 +15,7 @@ class Disk extends CoreObjects {
     private $name=null;
     private $size=null;
     private $path=null;
+    private $disk_file_created=null;
     
     public function __construct() {
         parent::__construct();
@@ -44,6 +45,15 @@ class Disk extends CoreObjects {
         $this->path = $path;
     }
     
+    public function getDisk_file_created() {
+        return $this->disk_file_created;
+    }
+
+    public function setDisk_file_created($disk_file_created) {
+        $this->disk_file_created = $disk_file_created;
+    }
+
+
 }
 
 ?>

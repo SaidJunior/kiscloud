@@ -207,9 +207,11 @@ if ((isset($_SESSION['login'])) && (!empty($_SESSION['login'])) && isset($_SESSI
                 ////////////////////////////
                 // Requete SQL Vers NFS
                 ////////////////////////////
-                $ip_nfsServer = "192.168.56.10";
-                $path = "/opt/KISStorage/";
-                $_SESSION['log_' . $session] .= "<p class=\"text-warning\">Need to do SQL Request for NFS Config</p>";
+                $requetSelectNFS = $bdd->query("SELECT * FROM NFS;"); // requete pour recup le nombre de manager
+                $resultSelectNFS = $requetSelectNFS->fetch();
+                $ip_nfsServer = $resultSelectNFS['ip_nfs'];
+                $path = $resultSelectNFS['path_nfs'];
+                
                 ////////////////////////////
                 $_SESSION['log_' . $session] .= "<p class=\"text-info\">Configuring NFS...</p>";
                 $nodeDelegate->installNFSConfiguration($node->getIp(), $node->getSsh_username(), $node->getSsh_password(), $node->getSsh_fingerprint(), $ip_nfsServer, $path);
