@@ -20,6 +20,8 @@ function removeVM(){
                     $("div#message_vm").show();
                     $("div#message_vm").html("<div class=\"alert alert-success\" href=\"#\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button><strong>Success</strong> Virtual machine deleted.</div>");
                     var t = setTimeout("$(\"div#message_vm\").hide()",3000);
+                    
+                    $('#idRowVM'+idVMtoDelete).html("");
                 }else{
                     // erreur
                     $('#modalRemoveVM').modal('hide');
