@@ -1,3 +1,5 @@
+<?php include '../include/global.php' ?>
+
 <script type="text/javascript">
 // variable globales
 var idVMtoDelete;//id bdd a supprimer
@@ -9,12 +11,44 @@ function startVM(id_vm){
     $.ajax({ 
         type: "POST",
         url: "ajax/startVM.php", 
-        data: "id="+idVMtoDelete,        
+        data: "id="+id_vm,        
         success: function(msg){ 
             if(msg==1){
-                // la vm est pas lancée'
+                // la vm est lancée'
                 $("div#message_vm").show();
-                $("div#message_vm").html("<div class=\"alert alert-block\" href=\"#\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button><strong>Warning</strong> Stop VM first.</div>");
+                $("div#message_vm").html("<div class=\"alert alert-success\" href=\"#\">VM Started.<button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button></div>");
+                var t = setTimeout("$(\"div#message_vm\").hide()",3000);
+                
+                $('#vmstatus_'+id_vm).attr("class", "icon-play");
+                
+            }
+            if(msg=="-1"){
+                $("div#message_vm").show();
+                $("div#message_vm").html("<div class=\"alert alert-error\" href=\"#\">VM Already Started.<button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button></div>");
+                var t = setTimeout("$(\"div#message_vm\").hide()",3000);
+            }
+        }
+    });
+}
+
+function stopVM(id_vm){
+    $.ajax({ 
+        type: "POST",
+        url: "ajax/stopVM.php", 
+        data: "id="+id_vm,        
+        success: function(msg){ 
+            if(msg==1){
+                // la vm est kill'
+                $("div#message_vm").show();
+                $("div#message_vm").html("<div class=\"alert alert-success\" href=\"#\">VM Stoped.<button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button></div>");
+                var t = setTimeout("$(\"div#message_vm\").hide()",3000);
+                
+                 $('#vmstatus_'+id_vm).attr("class", "icon-stop");
+                
+            }
+            if(msg=="-1"){
+                $("div#message_vm").show();
+                $("div#message_vm").html("<div class=\"alert alert-error\" href=\"#\">VM Already Stoped.<button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button></div>");
                 var t = setTimeout("$(\"div#message_vm\").hide()",3000);
             }
         }
@@ -30,7 +64,7 @@ function showConsole(id_vm){
         success: function(msg){ 
             if(msg>0){
                 // si c'est supérieur a 0 on a reçu le port pour le proxy'
-                window.open('http://localhost/kiscloud/no-vnc/vnc_auto.html?host=127.0.0.1&port='+msg);
+                window.open('no-vnc/vnc_auto.html?host=<?php echo $_SERVER['SERVER_ADDR']; ?>&port='+msg,'Console: ','width=721,height=440,directories=no,location=no,menubar=no,resizable=no,toolbar=no,scrollbars=yes,status=yes,titlebar=yes','');
                 
             }else{
                 // la vm n'est pas lancée'
@@ -64,6 +98,9 @@ function confirmeDeleteVM(id){
                 $("div#message_vm").show();
                 $("div#message_vm").html("<div class=\"alert alert-block\" href=\"#\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button><strong>Warning</strong> Stop VM first.</div>");
                 var t = setTimeout("$(\"div#message_vm\").hide()",3000);
+                
+                
+                
             }
         }
     });
@@ -118,6 +155,7 @@ function confirmeDeleteVM(id){
                     $donnees= $requet2->fetch();
                     $name_iso=$donnees['name_iso'];
                 }
+                
             ?>    
 
                 <tr id="idRowVM<?php echo $virtual_disk['id_vm'];?>">
@@ -126,8 +164,8 @@ function confirmeDeleteVM(id){
                         <div class="btn-group">
                           <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
                           <ul class="dropdown-menu">
-                            <li><a tabindex="-1" href="#"><i class="icon-play"></i> Start</a></li>
-                            <li><a tabindex="-1" href="#"><i class="icon-stop"></i> Stop</a></li>
+                            <li><a tabindex="-1" href="javascript:startVM(<?php echo $virtual_disk['id_vm'];?>)"><i class="icon-play"></i> Start</a></li>
+                            <li><a tabindex="-1" href="javascript:stopVM(<?php echo $virtual_disk['id_vm'];?>)"><i class="icon-stop"></i> Stop</a></li>
                             <li><a tabindex="-1" href="javascript:showConsole(<?php echo $virtual_disk['id_vm'];?>)"><i class="icon-eye-open"></i> Console</a></li>
                             <li><a tabindex="-1" href="javascript:confirmeDeleteVM(<?php echo $virtual_disk['id_vm'];?>)"><i class="icon-remove"></i> Delete</a></li>
                           </ul>
@@ -144,7 +182,13 @@ function confirmeDeleteVM(id){
                     <!-- colonne type de systeme -->
                     <td><img src="img/<?php echo $virtual_disk['systeme'];?>-icon.png" width="40px" height="40px" class="img-rounded"></td>
                     <!-- colonne Status -->
-                    <td><i class="icon-<?php echo $virtual_disk['status'];?>"></i></td>
+                    <td><i id="vmstatus_<?php echo $virtual_disk['id_vm']; ?>" class="icon-<?php
+                    if($virtual_disk['status']=="sto"){
+                        echo "stop";
+                    }else if($virtual_disk['status']=="run"){
+                        echo "play";
+                    }
+                    ?>"></i></td>
                     <!-- colonne iso ratachée -->
                     <td><?php echo $name_iso;?></td>
                 </tr>

@@ -9,11 +9,11 @@ $requet1 = $bdd->query("SELECT * FROM VM WHERE id_vm='$id_vm'");
 $donnees=$requet1->fetch();
 // on recup le status
 $status= $donnees['status'];
-if($status=="stop"){
+if($status=="sto"){
     // retour a 0
     echo 0;
 }else{
-    echo $donnees['port_proxy'];
+    echo 5900+$donnees['port_proxy'];
 }
 
 
