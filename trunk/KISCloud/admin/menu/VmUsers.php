@@ -5,11 +5,8 @@ if ((isset($_SESSION['login'])) && (!empty($_SESSION['login'])) && isset($_SESSI
     ?>
     <link rel="shortcut icon" type="image/ico" href="http://www.datatables.net/favicon.ico" />
 
-    <style type="text/css" title="currentStyle">
-        @import "../css/datatables/demo_page.css";
-        @import "../css/datatables/demo_table.css";
-    </style>
-    <script type="text/javascript" language="javascript" src="../js/datatables/jquery.js"></script>
+    <link href="../css/datatables/demo_page.css" rel="stylesheet">
+    <link href="../css/datatables/demo_table.css" rel="stylesheet">
     <script type="text/javascript" language="javascript" src="../js/datatables/jquery.dataTables.js"></script>
 
     <table cellpadding="0" cellspacing="0" border="0" class="display" id="listVM" width="90%">
@@ -33,9 +30,9 @@ JOIN VIRTUAL_DISK d ON vd.id_virtual_disk=d.id_virtual_disk
 JOIN USERS u ON v.id_user=u.id_user; ");
 
             while ($resultListVM = $requetListVM->fetch()) {// pour chaque ligne de la reponse
-                $ip_noeud=null;
-                if($resultListVM['id_noeud']!=null){
-                    $requetNodeInfos = $bdd->query("SELECT * FROM VM v JOIN NOEUD n ON v.id_noeud=n.id_noeud WHERE v.id_vm=".$resultListVM['id_vm'].";");
+                $ip_noeud = null;
+                if ($resultListVM['id_noeud'] != null) {
+                    $requetNodeInfos = $bdd->query("SELECT * FROM VM v JOIN NOEUD n ON v.id_noeud=n.id_noeud WHERE v.id_vm=" . $resultListVM['id_vm'] . ";");
                     $resultNodeInfos = $requetNodeInfos->fetch();
                     $ip_noeud = $resultNodeInfos['ip_noeud'];
                 }
@@ -52,9 +49,9 @@ JOIN USERS u ON v.id_user=u.id_user; ");
                     <td class="center"><?php echo $resultListVM['percent_proc_vm']; ?> %</td>
                 </tr>	
 
-        <?php
-    } // ferme le while du resultat de la requête
-    ?>	
+                <?php
+            } // ferme le while du resultat de la requête
+            ?>	
 
         </tbody>
 
